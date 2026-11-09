@@ -1,6 +1,7 @@
 import os
 import gym
 import json
+import subprocess
 import time
 import hydra
 import random
@@ -428,6 +429,19 @@ class DummyWandbRun:
         pass
 
 
+def git_state():
+    """Commit and dirty flag of the code that is running (hydra changes the cwd)."""
+    repo = os.path.dirname(os.path.abspath(__file__))
+    try:
+        run = lambda *a: subprocess.run(["git", *a], cwd=repo, capture_output=True, text=True)
+        return {
+            "git_commit": run("rev-parse", "HEAD").stdout.strip(),
+            "git_dirty": bool(run("status", "--porcelain", "--untracked-files=no").stdout.strip()),
+        }
+    except Exception:
+        return {"git_commit": None, "git_dirty": None}
+
+
 def planning_main(cfg_dict):
     output_dir = cfg_dict["saved_folder"]
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -508,6 +522,7 @@ def planning_main(cfg_dict):
         "wall_clock_s": time.time() - t0,
         "peak_gpu_mb": torch.cuda.max_memory_allocated() / 2**20 if torch.cuda.is_available() else None,
         "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
+        **git_state(),
         "num_hist": model_cfg.num_hist,
         "wm_eval_mode": wm_eval_mode,
         "predictor_training_as_loaded": predictor_training_as_loaded,

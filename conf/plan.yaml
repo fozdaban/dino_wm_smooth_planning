@@ -5,9 +5,9 @@ defaults:
 
 hydra:
   run:
-    dir: plan_outputs/${now:%Y%m%d%H%M%S}_${replace_slash:${model_name}}_gH${goal_H}
+    dir: plan_outputs/${now:%Y%m%d%H%M%S}_${replace_slash:${model_name}}_${planner.name}_s${seed}_gH${goal_H}
   sweep:
-    dir: plan_outputs/${now:%Y%m%d%H%M%S}_${replace_slash:${model_name}}_gH${goal_H}
+    dir: plan_outputs/${now:%Y%m%d%H%M%S}_${replace_slash:${model_name}}_${planner.name}_s${seed}_gH${goal_H}
     subdir: ${hydra.job.num}
   launcher:
     submitit_folder: ${hydra.sweep.dir}/.submitit/%j
