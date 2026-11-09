@@ -40,6 +40,9 @@ class GDPlanner(BasePlanner):
         self.opt_steps = opt_steps
         self.eval_every = eval_every
         self.logging_prefix = logging_prefix
+        # episodes are independent, so backprop them in chunks to bound GPU memory;
+        # the summed gradient is identical to one big batch
+        self.episode_chunk = kwargs.get("episode_chunk", 10)
 
     def init_actions(self, obs_0, actions=None):
         """
@@ -91,13 +94,18 @@ class GDPlanner(BasePlanner):
 
         for i in range(self.opt_steps):
             optimizer.zero_grad()
-            i_z_obses, i_zs = self.wm.rollout(
-                obs_0=trans_obs_0,
-                act=actions,
-            )
-            loss = self.objective_fn(i_z_obses, z_obs_g_detached)  # (n_evals, )
-            total_loss = loss.mean() * n_evals  # loss for each eval is independent
-            total_loss.backward()
+            total_loss = 0.0
+            for s in range(0, n_evals, self.episode_chunk):
+                e = s + self.episode_chunk
+                i_z_obses, _ = self.wm.rollout(
+                    obs_0={k: v[s:e] for k, v in trans_obs_0.items()},
+                    act=actions[s:e],
+                )
+                loss = self.objective_fn(
+                    i_z_obses, {k: v[s:e] for k, v in z_obs_g_detached.items()}
+                )  # (chunk, )
+                loss.sum().backward()  # grads accumulate into actions.grad
+                total_loss += loss.sum().item()
             with torch.no_grad():
                 actions_new = actions - optimizer.param_groups[0]["lr"] * actions.grad
                 actions_new += (
@@ -106,7 +114,7 @@ class GDPlanner(BasePlanner):
                 actions.copy_(actions_new)
 
             self.wandb_run.log(
-                {f"{self.logging_prefix}/loss": total_loss.item(), "step": i + 1}
+                {f"{self.logging_prefix}/loss": total_loss, "step": i + 1}
             )
             if self.evaluator is not None and i % self.eval_every == 0:
                 logs, successes, _, _ = self.evaluator.eval_actions(

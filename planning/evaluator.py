@@ -129,12 +129,21 @@ class PlanEvaluator:  # evaluator for planning
 
         # plot trajs
         if self.wm.decoder is not None:
-            i_visuals = self.wm.decode_obs(i_z_obses)[0]["visual"]
+            # no_grad: the decoder's weights require grad, so without it autograd keeps
+            # every decoder activation alive (roughly 2.3x the memory). The slice adds
+            # savings only when n_evals > n_plot_samples: only those episodes are plotted.
+            n_plot = min(self.n_plot_samples, n_evals)
+            with torch.no_grad():
+                i_visuals = self.wm.decode_obs(
+                    {k: v[:n_plot] for k, v in i_z_obses.items()}
+                )[0]["visual"]
             i_visuals = self._mask_traj(
-                i_visuals, action_len + 1
+                i_visuals, action_len[:n_plot] + 1
             )  # we have action_len + 1 states
-            e_visuals = self.preprocessor.transform_obs_visual(e_visuals)
-            e_visuals = self._mask_traj(e_visuals, action_len * self.frameskip + 1)
+            e_visuals = self.preprocessor.transform_obs_visual(e_visuals[:n_plot])
+            e_visuals = self._mask_traj(
+                e_visuals, action_len[:n_plot] * self.frameskip + 1
+            )
             self._plot_rollout_compare(
                 e_visuals=e_visuals,
                 i_visuals=i_visuals,

@@ -1,6 +1,7 @@
 import os
 import gym
 import json
+import time
 import hydra
 import random
 import torch
@@ -457,6 +458,16 @@ def planning_main(cfg_dict):
         Path(model_path) / "checkpoints" / f"model_{cfg_dict['model_epoch']}.pth"
     )
     model = load_model(model_ckpt, model_cfg, num_action_repeat, device=device)
+    # Planning never updates the world model. Freezing its weights means autograd only
+    # tracks the actions: GD's action gradients are unchanged, but no graph is kept for
+    # encoder/decoder/predictor weights (saves memory and backward compute).
+    model.requires_grad_(False)
+    # The predictor has dropout 0.1. Upstream never calls eval(), so whether dropout is
+    # active while planning depends on the training flag saved in the checkpoint.
+    predictor_training_as_loaded = model.predictor.training if model.predictor is not None else None
+    wm_eval_mode = cfg_dict.get("wm_eval_mode", False)
+    if wm_eval_mode:
+        model.eval()
 
     # use dummy vector env for wall and deformable envs
     if model_cfg.env.name == "wall" or model_cfg.env.name == "deformable_env":
@@ -489,7 +500,24 @@ def planning_main(cfg_dict):
         wandb_run=wandb_run,
     )
 
+    if torch.cuda.is_available():
+        torch.cuda.reset_peak_memory_stats()
+    t0 = time.time()
     logs = plan_workspace.perform_planning()
+    stats = {
+        "wall_clock_s": time.time() - t0,
+        "peak_gpu_mb": torch.cuda.max_memory_allocated() / 2**20 if torch.cuda.is_available() else None,
+        "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
+        "num_hist": model_cfg.num_hist,
+        "wm_eval_mode": wm_eval_mode,
+        "predictor_training_as_loaded": predictor_training_as_loaded,
+        "predictor_dropout_active": model.predictor.training if model.predictor is not None else None,
+        "frameskip": model_cfg.frameskip,
+        "final_success_rate": logs.get("final_eval/success_rate"),
+    }
+    with open("run_stats.json", "w") as f:
+        json.dump(stats, f, indent=2)
+    print("run_stats:", stats)
     return logs
 
 

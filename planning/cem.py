@@ -40,6 +40,9 @@ class CEMPlanner(BasePlanner):
         self.opt_steps = opt_steps
         self.eval_every = eval_every
         self.logging_prefix = logging_prefix
+        # evaluate the num_samples candidates in chunks to stay within GPU memory;
+        # results are identical to one big batch (up to float nondeterminism)
+        self.rollout_chunk = kwargs.get("rollout_chunk", 25)
 
     def init_mu_sigma(self, obs_0, actions=None):
         """
@@ -104,13 +107,20 @@ class CEMPlanner(BasePlanner):
                     + mu[traj]
                 )
                 action[0] = mu[traj]  # optional: make the first one mu itself
+                loss_chunks = []
                 with torch.no_grad():
-                    i_z_obses, i_zs = self.wm.rollout(
-                        obs_0=cur_trans_obs_0,
-                        act=action,
-                    )
-
-                loss = self.objective_fn(i_z_obses, cur_z_obs_g)
+                    for s in range(0, self.num_samples, self.rollout_chunk):
+                        e = s + self.rollout_chunk
+                        i_z_obses, _ = self.wm.rollout(
+                            obs_0={k: v[s:e] for k, v in cur_trans_obs_0.items()},
+                            act=action[s:e],
+                        )
+                        loss_chunks.append(
+                            self.objective_fn(
+                                i_z_obses, {k: v[s:e] for k, v in cur_z_obs_g.items()}
+                            )
+                        )
+                loss = torch.cat(loss_chunks)
                 topk_idx = torch.argsort(loss)[: self.topk]
                 topk_action = action[topk_idx]
                 losses.append(loss[topk_idx[0]].item())

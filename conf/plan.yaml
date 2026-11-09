@@ -35,6 +35,9 @@ n_plot_samples: 10
 
 debug_dset_init: False
 
+# false = upstream behaviour (dropout state as saved in the checkpoint); true = model.eval(), deterministic predictor
+wm_eval_mode: false
+
 objective:
   _target_: planning.objectives.create_objective_fn
   alpha: 1
