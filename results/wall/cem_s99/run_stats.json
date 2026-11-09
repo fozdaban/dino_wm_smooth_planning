@@ -1,0 +1,11 @@
+{
+  "wall_clock_s": 6683.347552537918,
+  "peak_gpu_mb": 2092.96240234375,
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "num_hist": 1,
+  "wm_eval_mode": false,
+  "predictor_training_as_loaded": false,
+  "predictor_dropout_active": false,
+  "frameskip": 5,
+  "final_success_rate": 0.28
+}
