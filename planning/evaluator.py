@@ -1,4 +1,5 @@
 import os
+import json
 import torch
 import imageio
 import numpy as np
@@ -121,11 +122,14 @@ class PlanEvaluator:  # evaluator for planning
         ]  # reduce dim back
 
         # compute eval metrics
-        logs, successes = self._compute_rollout_metrics(
+        logs, successes, episode_metrics = self._compute_rollout_metrics(
             e_state=e_final_state,
             e_obs=e_final_obs,
             i_z_obs=i_final_z_obs,
         )
+        # one line per call, in the run directory (cwd, like logs.json)
+        with open("episodes.jsonl", "a") as f:
+            f.write(json.dumps({"filename": filename, **episode_metrics}) + "\n")
 
         # plot trajs
         if self.wm.decoder is not None:
@@ -163,6 +167,7 @@ class PlanEvaluator:  # evaluator for planning
         Return
             logs
             successes
+            episode_metrics: dict of per-episode lists (success, state_dist, div_visual_emb)
         """
         eval_results = self.env.eval_state(self.state_g, e_state)
         successes = eval_results['success']
@@ -184,6 +189,16 @@ class PlanEvaluator:  # evaluator for planning
         e_z_obs = self.wm.encode_obs(e_obs)
         div_visual_emb = torch.norm(e_z_obs["visual"] - i_z_obs["visual"]).item()
         div_proprio_emb = torch.norm(e_z_obs["proprio"] - i_z_obs["proprio"]).item()
+        # per-episode L2 distance between executed and imagined final visual embeddings
+        visual_emb_diff = e_z_obs["visual"] - i_z_obs["visual"]
+        div_visual_emb_per_ep = visual_emb_diff.reshape(visual_emb_diff.shape[0], -1).norm(dim=1)
+
+        state_dist = eval_results.get("state_dist")  # absent for deformable_env
+        episode_metrics = {
+            "success": np.asarray(successes).astype(bool).tolist(),
+            "state_dist": None if state_dist is None else np.asarray(state_dist, dtype=float).tolist(),
+            "div_visual_emb": div_visual_emb_per_ep.detach().cpu().tolist(),
+        }
 
         logs.update({
             "mean_visual_dist": mean_visual_dist,
@@ -192,7 +207,7 @@ class PlanEvaluator:  # evaluator for planning
             "mean_div_proprio_emb": div_proprio_emb,
         })
 
-        return logs, successes
+        return logs, successes, episode_metrics
 
     def _plot_rollout_compare(
         self, e_visuals, i_visuals, successes, save_video=False, filename=""
