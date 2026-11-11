@@ -177,6 +177,9 @@ class PlanWorkspace:
         ):
             self.wandb_run = DummyWandbRun()
 
+        # lets the evaluator log each episode's model cost in episodes.jsonl
+        self.evaluator.objective_fn = objective_fn
+
         self.log_filename = "logs.json"  # planner and final eval logs are dumped here
         self.planner = hydra.utils.instantiate(
             self.cfg_dict["planner"],

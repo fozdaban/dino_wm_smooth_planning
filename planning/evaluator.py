@@ -107,6 +107,12 @@ class PlanEvaluator:  # evaluator for planning
                 obs_0=trans_obs_0,
                 act=actions,
             )
+            # per-episode planning cost of these actions under the model (what the
+            # planner minimizes). Low cost + failure = model fooled; high cost = stuck.
+            model_cost = None
+            if getattr(self, "objective_fn", None) is not None:
+                z_obs_g = self.wm.encode_obs(trans_obs_g)
+                model_cost = self.objective_fn(i_z_obses, z_obs_g).float().cpu().tolist()
         i_final_z_obs = self._get_trajdict_last(i_z_obses, action_len + 1)
 
         # rollout in env
@@ -127,6 +133,8 @@ class PlanEvaluator:  # evaluator for planning
             e_obs=e_final_obs,
             i_z_obs=i_final_z_obs,
         )
+        if model_cost is not None:
+            episode_metrics["model_cost"] = model_cost
         # one line per call, in the run directory (cwd, like logs.json)
         with open("episodes.jsonl", "a") as f:
             f.write(json.dumps({"filename": filename, **episode_metrics}) + "\n")

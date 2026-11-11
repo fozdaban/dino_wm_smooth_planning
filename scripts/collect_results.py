@@ -21,6 +21,8 @@ Columns (rates as defined in scripts/episode_rates.py, shared with phase1_rates.
   best     best single evaluation (iteration N or the final one) and where it occurred
   any      fraction of episodes solved at any evaluation, final included (oracle)
   dist     mean final state distance          gap   mean per-episode model-simulator gap
+  cost     mean model (planning) cost of the returned plan; needs episodes.jsonl with
+           model_cost (runs from phase 3 on). Low cost + failure = model fooled.
   plan_eq  plan-rollout equivalents (forward + 2 x backward), in thousands
   plan_s   planning time excluding evaluation (falls back to wall-clock for old runs)
 Runs made before the harness have no compute counters or episodes.jsonl; those cells
@@ -84,7 +86,7 @@ def load_run(d):
         "key": key,
         "planner": (cfg or {}).get("planner", {}).get("name", "?"),
         "final": stats.get("final_success_rate"),
-        "best": None, "best_at": None, "any": None, "dist": None, "gap": None,
+        "best": None, "best_at": None, "any": None, "dist": None, "gap": None, "cost": None,
         "plan_equiv": stats.get("plan_equiv"),
         "enc_images": stats.get("enc_images"),
         "plan_s": stats.get("plan_s", stats.get("wall_clock_s")),
@@ -114,6 +116,7 @@ def load_run(d):
         best=rates["best_rate"], best_at=rates["best_at"], any=rates["any_rate"],
         dist=float(np.mean(final_line["state_dist"])) if final_line.get("state_dist") else None,
         gap=float(np.mean(final_line[gap_key])) if final_line.get(gap_key) else None,
+        cost=float(np.mean(final_line["model_cost"])) if final_line.get("model_cost") else None,
         _rates=rates,
     )
     return row
@@ -163,6 +166,8 @@ def fmt(v, kind):
         return ""
     if kind == "rate":
         return f"{v:.2f}"
+    if kind == "c":
+        return f"{v:.3g}"
     if kind == "k":
         return f"{v / 1e3:.1f}"
     if kind == "M":
@@ -201,14 +206,14 @@ def main():
         r["label"] = labels[r["group"]]
         r["role"] = "held-out" if r["seed"] in heldout else "tuning"
 
-    head = ["run", "settings", "seed", "role", "final", "best (at)", "any", "dist", "gap",
+    head = ["run", "settings", "seed", "role", "final", "best (at)", "any", "dist", "gap", "cost",
             "plan_eq (k)", "enc img (M)", "plan time", "peak GB", "git"]
     print("| " + " | ".join(head) + " |\n|" + "---|" * len(head))
     for r in rows:
         best = f"{fmt(r['best'], 'rate')} ({r['best_at']})" if r["best"] is not None else ""
         print("| " + " | ".join([
             r["run"], r["label"], fmt(r["seed"], ""), r["role"], fmt(r["final"], "rate"), best,
-            fmt(r["any"], "rate"), fmt(r["dist"], "f1"), fmt(r["gap"], "f1"),
+            fmt(r["any"], "rate"), fmt(r["dist"], "f1"), fmt(r["gap"], "f1"), fmt(r["cost"], "c"),
             fmt(r["plan_equiv"], "k"), fmt(r["enc_images"], "M"), fmt(r["plan_s"], "s"),
             fmt(r["peak_gpu_mb"] and r["peak_gpu_mb"] / 1024, "f1"), git_tag(r),
         ]) + " |")
@@ -290,7 +295,7 @@ def main():
 
     if a.csv:
         cols = ["run", "label", "seed", "role", "planner", "final", "best", "best_at", "any",
-                "dist", "gap", "plan_equiv", "enc_images", "plan_s", "peak_gpu_mb", "gpu",
+                "dist", "gap", "cost", "plan_equiv", "enc_images", "plan_s", "peak_gpu_mb", "gpu",
                 "git_commit", "git_dirty", "oracle_stop"]
         with open(a.csv, "w", newline="") as f:
             w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")

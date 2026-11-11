@@ -7,3 +7,7 @@ opt_steps: 1000
 eval_every: 10
 
 name: gd
+# phase 3 options (defaults = upstream GD); override without "+", e.g. planner.optimizer=adam
+optimizer: sgd      # sgd (upstream update) | adam
+restarts: 1         # independent initial plans per episode; best by model cost
+init_scale: 1.0     # std of the randn init

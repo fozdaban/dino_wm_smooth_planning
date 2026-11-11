@@ -46,12 +46,24 @@ class GDPlanner(BasePlanner):
         # upstream stops planning once the simulator reports every episode solved,
         # which uses information a real planner doesn't have; false = fixed budget
         self.oracle_stop = kwargs.get("oracle_stop", True)
+        # ---- phase 3 options (defaults reproduce upstream GD exactly) ----
+        # optimizer: "sgd" = upstream update a <- a - lr * grad (+ noise);
+        #            "adam" = torch.optim.Adam step (+ the same noise)
+        self.optimizer_name = kwargs.get("optimizer", "sgd")
+        # restarts: R independent initial plans per episode, optimized together;
+        # the returned plan is the one with the lowest MODEL cost (never the simulator)
+        self.restarts = int(kwargs.get("restarts", 1))
+        # init_scale: std of the "randn" initialization
+        self.init_scale = float(kwargs.get("init_scale", 1.0))
+        assert self.optimizer_name in ("sgd", "adam"), self.optimizer_name
+        assert self.restarts >= 1
 
-    def init_actions(self, obs_0, actions=None):
+    def init_actions(self, obs_0, actions=None, n_rows=None):
         """
         Initializes or appends actions for planning, ensuring the output shape is (b, self.horizon, action_dim).
+        n_rows: number of plans to initialize (n_evals * restarts); defaults to n_evals.
         """
-        n_evals = obs_0["visual"].shape[0]
+        n_evals = obs_0["visual"].shape[0] if n_rows is None else n_rows
         if actions is None:
             actions = torch.zeros(n_evals, 0, self.action_dim)
         device = actions.device
@@ -60,7 +72,11 @@ class GDPlanner(BasePlanner):
 
         if remaining_t > 0:
             if self.sample_type == "randn":
-                new_actions = torch.randn(n_evals, remaining_t, self.action_dim)
+                new_actions = self.init_scale * torch.randn(
+                    n_evals, remaining_t, self.action_dim
+                )
+            elif self.sample_type == "normzero":  # 0 in normalized units = CEM's initial mean
+                new_actions = torch.zeros(n_evals, remaining_t, self.action_dim)
             elif self.sample_type == "zero":  # zero action of env
                 new_actions = torch.zeros(n_evals, remaining_t, self.action_dim)
                 new_actions = rearrange(
@@ -72,7 +88,36 @@ class GDPlanner(BasePlanner):
         return actions
 
     def get_action_optimizer(self, actions):
+        if self.optimizer_name == "adam":
+            return torch.optim.Adam([actions], lr=self.lr)
         return torch.optim.SGD([actions], lr=self.lr)
+
+    def _repeat(self, x):
+        """(n, ...) -> (n * R, ...), each episode's rows contiguous."""
+        return x.repeat_interleave(self.restarts, dim=0) if self.restarts > 1 else x
+
+    def _select(self, actions, costs, n_evals):
+        """Pick, per episode, the restart with the lowest model cost."""
+        if self.restarts == 1:
+            return actions
+        R = self.restarts
+        best = costs.view(n_evals, R).argmin(dim=1)
+        return actions.view(n_evals, R, *actions.shape[1:])[torch.arange(n_evals, device=actions.device), best]
+
+    def _model_costs(self, actions, trans_obs_0, z_obs_g):
+        """No-grad model cost of every row (counted as planner compute)."""
+        costs = []
+        with torch.no_grad():
+            for s in range(0, actions.shape[0], self.episode_chunk):
+                e = s + self.episode_chunk
+                i_z_obses, _ = self.wm.rollout(
+                    obs_0={k: v[s:e] for k, v in trans_obs_0.items()},
+                    act=actions[s:e],
+                )
+                costs.append(
+                    self.objective_fn(i_z_obses, {k: v[s:e] for k, v in z_obs_g.items()})
+                )
+        return torch.cat(costs)
 
     def plan(self, obs_0, obs_g, actions=None):
         """
@@ -90,15 +135,26 @@ class GDPlanner(BasePlanner):
         z_obs_g = self.wm.encode_obs(trans_obs_g)
         z_obs_g_detached = {key: value.detach() for key, value in z_obs_g.items()}
 
-        actions = self.init_actions(obs_0, actions).to(self.device)
+        n_evals = obs_0["visual"].shape[0]
+        if self.restarts > 1:
+            # each episode gets R rows (contiguous); a given initial plan seeds every restart
+            if actions is not None:
+                actions = self._repeat(actions)
+            trans_obs_0 = {k: self._repeat(v) for k, v in trans_obs_0.items()}
+            z_obs_g_detached = {k: self._repeat(v) for k, v in z_obs_g_detached.items()}
+        actions = self.init_actions(
+            obs_0, actions, n_rows=n_evals * self.restarts
+        ).to(self.device)
         actions.requires_grad = True
         optimizer = self.get_action_optimizer(actions)
-        n_evals = actions.shape[0]
+        n_rows = actions.shape[0]
+        last_costs = None
 
         for i in range(self.opt_steps):
             optimizer.zero_grad()
             total_loss = 0.0
-            for s in range(0, n_evals, self.episode_chunk):
+            row_costs = []
+            for s in range(0, n_rows, self.episode_chunk):
                 e = s + self.episode_chunk
                 i_z_obses, _ = self.wm.rollout(
                     obs_0={k: v[s:e] for k, v in trans_obs_0.items()},
@@ -109,19 +165,29 @@ class GDPlanner(BasePlanner):
                 )  # (chunk, )
                 loss.sum().backward()  # grads accumulate into actions.grad
                 total_loss += loss.sum().item()
-            with torch.no_grad():
-                actions_new = actions - optimizer.param_groups[0]["lr"] * actions.grad
-                actions_new += (
-                    torch.randn_like(actions_new) * self.action_noise
-                )  # Add Gaussian noise
-                actions.copy_(actions_new)
+                row_costs.append(loss.detach())
+            last_costs = torch.cat(row_costs)  # cost of the plans *before* this update
+            if self.optimizer_name == "adam":
+                optimizer.step()
+                with torch.no_grad():
+                    actions.add_(torch.randn_like(actions) * self.action_noise)
+            else:  # upstream update, unchanged
+                with torch.no_grad():
+                    actions_new = actions - optimizer.param_groups[0]["lr"] * actions.grad
+                    actions_new += (
+                        torch.randn_like(actions_new) * self.action_noise
+                    )  # Add Gaussian noise
+                    actions.copy_(actions_new)
 
             self.wandb_run.log(
                 {f"{self.logging_prefix}/loss": total_loss, "step": i + 1}
             )
             if self.evaluator is not None and i % self.eval_every == 0:
+                # with restarts, intermediate evaluations show the restart that had the
+                # lowest cost at this step's forward pass (logging only, no extra compute)
                 logs, successes, _, _ = self.evaluator.eval_actions(
-                    actions.detach(), filename=f"{self.logging_prefix}_output_{i+1}"
+                    self._select(actions.detach(), last_costs, n_evals),
+                    filename=f"{self.logging_prefix}_output_{i+1}",
                 )
                 logs = {f"{self.logging_prefix}/{k}": v for k, v in logs.items()}
                 logs.update({"step": i + 1})
@@ -129,4 +195,7 @@ class GDPlanner(BasePlanner):
                 self.dump_logs(logs)
                 if self.oracle_stop and np.all(successes):
                     break  # terminate planning if all success
+        if self.restarts > 1:
+            final_costs = self._model_costs(actions.detach(), trans_obs_0, z_obs_g_detached)
+            actions = self._select(actions.detach(), final_costs, n_evals)
         return actions, np.full(n_evals, np.inf)  # all actions are valid
