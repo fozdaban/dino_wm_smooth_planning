@@ -6,72 +6,27 @@ usage: python scripts/phase1_rates.py <run_dir>... --at N
 For each run (and pooled over all episodes of all runs) prints:
   at_N   success rate at planning iteration N
   final  success rate at the final evaluation (filename "output_final")
-  best   highest success rate of any single evaluated iteration
-  any    fraction of episodes that succeeded at one or more evaluated iterations
+  best   highest success rate of any single evaluation, and where it occurred
+  any    fraction of episodes that succeeded at one or more evaluations
 
-Iterations are read from the evaluation filenames:
-  CEM / GD   "plan_0_output_<step>"  -> iteration <step> (same "step" as logs.json)
-  MPC        "plan<k>"               -> iteration k + 1 (one MPC replanning round)
-Only iterations that were evaluated exist (GD evaluates every `eval_every` steps).
+The definitions live in scripts/episode_rates.py, shared with collect_results.py:
+"best" and "any" include the final evaluation as well as every evaluated iteration.
+Iterations come from the evaluation filenames (CEM/GD "plan_0_output_<step>", MPC
+"plan<k>" = round k+1); only evaluated iterations exist (GD: every eval_every steps).
 Planners stop early once every episode succeeds; for N past the last evaluation of
 such a run, its last (all-success) evaluation is used and the value is marked "*".
-"Final" is not counted as an iteration for "best" or "any".
-Pooled "best" is the best iteration of the pooled rate (same N for every run).
+Pooled "best" is the best single evaluation of the pooled rate (same one for every run).
 """
 import argparse
-import json
-import re
 import sys
 from pathlib import Path
 
-CEM_GD = re.compile(r"^plan_0_output_(\d+)$")
-MPC = re.compile(r"^plan(\d+)$")
-
-
-def load_run(run_dir):
-    path = Path(run_dir)
-    path = path if path.is_file() else path / "episodes.jsonl"
-    if not path.is_file():
-        raise FileNotFoundError(f"no episodes.jsonl in {run_dir}")
-    lines = [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
-
-    seen = {}
-    for line in lines:  # a re-run into the same directory appends; keep the latest
-        seen[line["filename"]] = line
-    if len(seen) != len(lines):
-        print(f"warning: {path} has repeated filenames; using the last of each", file=sys.stderr)
-
-    mpc = {int(m.group(1)) + 1: l["success"] for f, l in seen.items() if (m := MPC.match(f))}
-    cem_gd = {int(m.group(1)): l["success"] for f, l in seen.items() if (m := CEM_GD.match(f))}
-    iters = mpc or cem_gd  # MPC runs also contain sub-planner lines (plan_<k>_output_*)
-    final = seen.get("output_final", {}).get("success")
-
-    sizes = {len(s) for s in list(iters.values()) + ([final] if final else [])}
-    if len(sizes) > 1:
-        raise ValueError(f"{path}: evaluations have different episode counts {sorted(sizes)}")
-    n_eps = sizes.pop() if sizes else 0
-    return {"name": str(run_dir), "iters": dict(sorted(iters.items())), "final": final,
-            "n_eps": n_eps, "kind": "mpc" if mpc else "cem/gd"}
-
-
-def at_iteration(run, n):
-    """Per-episode successes at iteration n, and whether it was carried forward."""
-    iters = run["iters"]
-    if n in iters:
-        return iters[n], False
-    if iters:
-        last = max(iters)
-        if n > last and all(iters[last]):
-            return iters[last], True
-    return None, False
-
-
-def rate(successes):
-    return sum(successes) / len(successes) if successes else None
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # shared module lives next to this file
+from episode_rates import pool_rates, read_episodes, run_rates  # noqa: E402
 
 
 def fmt(value, mark=False):
-    return "    n/a" if value is None else f"{value:7.3f}" + ("*" if mark else " ")
+    return "    n/a " if value is None else f"{value:7.3f}" + ("*" if mark else " ")
 
 
 def main():
@@ -83,52 +38,34 @@ def main():
     runs = []
     for d in args.run_dirs:
         try:
-            runs.append(load_run(d))
+            lines, repeated = read_episodes(d)
+            if repeated:
+                print(f"warning: {d} has repeated filenames; using the last of each", file=sys.stderr)
+            runs.append((str(d), run_rates(lines, at=args.at)))
         except (FileNotFoundError, ValueError) as e:
-            print(f"skipping: {e}", file=sys.stderr)
+            print(f"skipping {d}: {e}", file=sys.stderr)
     if not runs:
         sys.exit("no usable runs")
 
-    width = max(len(r["name"]) for r in runs + [{"name": "POOLED"}])
-    print(f"{'run':{width}}  {'kind':6}  {'eps':>4}  {'at_' + str(args.at):>8} {'final':>8} {'best':>8} {'(iter)':>6} {'any':>8}")
+    width = max(len(name) for name, _ in runs + [("POOLED", None)])
+    print(f"{'run':{width}}  {'kind':6}  {'eps':>4}  {'at_' + str(args.at):>8}"
+          f"{'final':>8}{'best':>9} {'(at)':>6} {'any':>8}")
 
-    pooled_at, pooled_final, pooled_any, all_iters = [], [], [], set()
-    missing_at = missing_final = False
-    for r in runs:
-        at, carried = at_iteration(r, args.at)
-        rates = {n: rate(s) for n, s in r["iters"].items()}
-        best_n = max(rates, key=lambda n: (rates[n], -n)) if rates else None  # earliest best
-        any_ok = [any(col) for col in zip(*r["iters"].values())] if r["iters"] else None
-        print(f"{r['name']:{width}}  {r['kind']:6}  {r['n_eps']:4d}  {fmt(rate(at), carried)}"
-              f"{fmt(rate(r['final']))}{fmt(rates.get(best_n))}{best_n if best_n else '-':>6}"
-              f" {fmt(rate(any_ok))}")
-        if at is None:
-            avail = list(r["iters"]) or "none"
-            print(f"{'':{width}}  iteration {args.at} not evaluated; available: {avail}")
-            missing_at = True
-        else:
-            pooled_at += at
-        if r["final"] is None:
-            missing_final = True
-        else:
-            pooled_final += r["final"]
-        pooled_any += any_ok or []
-        all_iters |= set(r["iters"])
+    def row(name, kind, r):
+        best_at = "-" if r["best_at"] is None else r["best_at"]
+        print(f"{name:{width}}  {kind:6}  {r['n_eps']:4d}  {fmt(r['at_rate'], r.get('at_carried'))}"
+              f"{fmt(r['final_rate'])}{fmt(r['best_rate'])}{best_at:>6} {fmt(r['any_rate'])}")
 
-    # pooled best: same iteration n for every run (carrying forward early-stopped runs)
-    pooled_rates = {}
-    for n in sorted(all_iters):
-        cols = [at_iteration(r, n)[0] for r in runs]
-        if all(c is not None for c in cols):
-            pooled_rates[n] = rate([s for c in cols for s in c])
-    best_n = max(pooled_rates, key=lambda n: (pooled_rates[n], -n)) if pooled_rates else None
-    total = sum(r["n_eps"] for r in runs)
-    print(f"{'POOLED':{width}}  {'':6}  {total:4d}  {fmt(None if missing_at else rate(pooled_at))}"
-          f"{fmt(None if missing_final else rate(pooled_final))}{fmt(pooled_rates.get(best_n))}"
-          f"{best_n if best_n else '-':>6} {fmt(rate(pooled_any))}")
-    if missing_at or missing_final:
+    for name, r in runs:
+        row(name, r["kind"], r)
+        if r["at"] is None:
+            print(f"{'':{width}}  iteration {args.at} not evaluated; available: {list(r['iters']) or 'none'}")
+
+    rates = [r for _, r in runs]
+    row("POOLED", "", pool_rates(rates, at=args.at))
+    if any(r["at"] is None for r in rates) or any(r["final"] is None for r in rates):
         print("pooled at_N / final are n/a because at least one run lacks that evaluation")
-    if any(at_iteration(r, args.at)[1] for r in runs):
+    if any(r["at_carried"] for r in rates):
         print("* carried forward: the run stopped early after every episode succeeded")
 
 

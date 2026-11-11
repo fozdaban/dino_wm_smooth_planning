@@ -21,6 +21,7 @@ from env.venv import SubprocVectorEnv
 from custom_resolvers import replace_slash
 from preprocessor import Preprocessor
 from planning.evaluator import PlanEvaluator
+from planning.compute import ComputeMeter, _sync
 from utils import cfg_to_dict, seed
 
 warnings.filterwarnings("ignore")
@@ -514,12 +515,20 @@ def planning_main(cfg_dict):
         wandb_run=wandb_run,
     )
 
+    # phase 2 harness: count world-model work done by the planner and time the
+    # evaluator separately; neither changes what the planner computes
+    meter = ComputeMeter().attach(model).wrap_evaluator(plan_workspace.evaluator)
+
     if torch.cuda.is_available():
         torch.cuda.reset_peak_memory_stats()
     t0 = time.time()
     logs = plan_workspace.perform_planning()
+    _sync()
+    wall_clock_s = time.time() - t0
     stats = {
-        "wall_clock_s": time.time() - t0,
+        "wall_clock_s": wall_clock_s,
+        **meter.stats(wall_clock_s),
+        "oracle_stop": getattr(plan_workspace.planner, "oracle_stop", None),
         "peak_gpu_mb": torch.cuda.max_memory_allocated() / 2**20 if torch.cuda.is_available() else None,
         "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
         **git_state(),

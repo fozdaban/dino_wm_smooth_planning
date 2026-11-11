@@ -43,6 +43,9 @@ class CEMPlanner(BasePlanner):
         # evaluate the num_samples candidates in chunks to stay within GPU memory;
         # results are identical to one big batch (up to float nondeterminism)
         self.rollout_chunk = kwargs.get("rollout_chunk", 25)
+        # upstream stops planning once the simulator reports every episode solved,
+        # which uses information a real planner doesn't have; false = fixed budget
+        self.oracle_stop = kwargs.get("oracle_stop", True)
 
     def init_mu_sigma(self, obs_0, actions=None):
         """
@@ -138,7 +141,7 @@ class CEMPlanner(BasePlanner):
                 logs.update({"step": i + 1})
                 self.wandb_run.log(logs)
                 self.dump_logs(logs)
-                if np.all(successes):
+                if self.oracle_stop and np.all(successes):
                     break  # terminate planning if all success
 
         return mu, np.full(n_evals, np.inf)  # all actions are valid

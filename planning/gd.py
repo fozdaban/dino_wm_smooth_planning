@@ -43,6 +43,9 @@ class GDPlanner(BasePlanner):
         # episodes are independent, so backprop them in chunks to bound GPU memory;
         # the summed gradient is identical to one big batch
         self.episode_chunk = kwargs.get("episode_chunk", 10)
+        # upstream stops planning once the simulator reports every episode solved,
+        # which uses information a real planner doesn't have; false = fixed budget
+        self.oracle_stop = kwargs.get("oracle_stop", True)
 
     def init_actions(self, obs_0, actions=None):
         """
@@ -124,6 +127,6 @@ class GDPlanner(BasePlanner):
                 logs.update({"step": i + 1})
                 self.wandb_run.log(logs)
                 self.dump_logs(logs)
-                if np.all(successes):
+                if self.oracle_stop and np.all(successes):
                     break  # terminate planning if all success
         return actions, np.full(n_evals, np.inf)  # all actions are valid
