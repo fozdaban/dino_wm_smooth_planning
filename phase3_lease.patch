@@ -1,0 +1,65 @@
+diff --git a/plan.py b/plan.py
+index d4bb478..07be88a 100644
+--- a/plan.py
++++ b/plan.py
+@@ -554,7 +554,7 @@ def main(cfg: OmegaConf):
+         cfg["saved_folder"] = os.getcwd()
+         log.info(f"Planning result saved dir: {cfg['saved_folder']}")
+     cfg_dict = cfg_to_dict(cfg)
+-    cfg_dict["wandb_logging"] = True
++    cfg_dict["wandb_logging"] = False  # was True upstream: W&B asked for login every run
+     planning_main(cfg_dict)
+ 
+ 
+diff --git a/scripts/phase3_sweep.sh b/scripts/phase3_sweep.sh
+index 2276093..a20e608 100644
+--- a/scripts/phase3_sweep.sh
++++ b/scripts/phase3_sweep.sh
+@@ -5,26 +5,37 @@
+ #   STAGE=B OPT=adam LR=0.1 bash scripts/phase3_sweep.sh      # initialization, best of A
+ #   STAGE=C OPT=adam LR=0.1 INIT=randn bash scripts/phase3_sweep.sh   # restarts at CEM@10 budget
+ #
+-# Env: CHUNK (episode_chunk, default 10 = laptop-safe), SEED (default 99), DRY=1 to print only.
+-# Each run gets its own hydra dir, so several stages can run at once (e.g. separate tmux
+-# windows on the lease GPU). Existing results/wall/<name>_s<seed> folders are skipped.
++# Env: CHUNK (episode_chunk, default 10 = laptop-safe; use one value for every lease run),
++#      SEED (default 99), CKPT (checkpoint base, default $HOME/ckpt), DRY=1 to print only.
++# Parallel workers: start the same command in several tmux windows. Each run is claimed
++# with a lock directory (results/wall/.lock_<name>_s<seed>), so workers never duplicate
++# a run; finished runs (results/wall/<name>_s<seed>) are skipped. A failed run releases
++# its lock, so starting the command again retries it.
+ set -uo pipefail
+ STAGE=${STAGE:?set STAGE=A, B or C}
+ SEED=${SEED:-99}
+ CHUNK=${CHUNK:-10}
++CKPT=${CKPT:-$HOME/ckpt}
++export WANDB_MODE=disabled
+ COMMON=(model_name=wall_single planner=gd goal_source=random_state goal_H=5 n_evals=50
+-        seed=$SEED +planner.oracle_stop=false +planner.episode_chunk=$CHUNK)
++        seed=$SEED ckpt_base_path=$CKPT +planner.oracle_stop=false +planner.episode_chunk=$CHUNK)
++mkdir -p results/wall
+ 
+ run() {  # run <name> <hydra overrides...>
+   local name=$1; shift
+   local out=results/wall/${name}_s${SEED}
+-  if [ -e "$out" ]; then echo "skip $name (exists)"; return 0; fi
++  local lock=results/wall/.lock_${name}_s${SEED}
++  if [ -e "$out" ]; then echo "skip $name (done)"; return 0; fi
++  if [ -n "${DRY:-}" ]; then echo ">>> $name: $*"; return 0; fi
++  mkdir "$lock" 2>/dev/null || { echo "skip $name (another worker has it)"; return 0; }
+   local dir=plan_outputs/$(date +%Y%m%d%H%M%S)_${name}_s${SEED}
+-  echo ">>> $name: $*"
+-  [ -n "${DRY:-}" ] && return 0
+-  python plan.py "${COMMON[@]}" "$@" hydra.run.dir="$dir" \
+-    && bash scripts/save_run.sh "$dir" "${name}_s${SEED}" \
+-    || echo "FAILED: $name (see $dir)"
++  echo ">>> $(date +%H:%M) $name: $*"
++  if python plan.py "${COMMON[@]}" "$@" hydra.run.dir="$dir" \
++       && bash scripts/save_run.sh "$dir" "${name}_s${SEED}"; then
++    rmdir "$lock"
++  else
++    rmdir "$lock"; echo "FAILED: $name (see $dir)"
++  fi
+ }
+ 
+ case $STAGE in
