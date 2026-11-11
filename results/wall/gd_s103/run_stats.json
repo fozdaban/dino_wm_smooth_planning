@@ -1,0 +1,13 @@
+{
+  "wall_clock_s": 895.7452185153961,
+  "peak_gpu_mb": 2452.33251953125,
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "git_commit": "9d6aa4950b6a7d9f1f0071c4ee2984c04e94291d",
+  "git_dirty": true,
+  "num_hist": 1,
+  "wm_eval_mode": false,
+  "predictor_training_as_loaded": false,
+  "predictor_dropout_active": false,
+  "frameskip": 5,
+  "final_success_rate": 0.14
+}
