@@ -554,7 +554,7 @@ def main(cfg: OmegaConf):
         cfg["saved_folder"] = os.getcwd()
         log.info(f"Planning result saved dir: {cfg['saved_folder']}")
     cfg_dict = cfg_to_dict(cfg)
-    cfg_dict["wandb_logging"] = True
+    cfg_dict["wandb_logging"] = False  # was True upstream: W&B asked for login every run
     planning_main(cfg_dict)
 
 
