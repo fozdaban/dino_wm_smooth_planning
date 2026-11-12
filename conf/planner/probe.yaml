@@ -1,0 +1,16 @@
+_target_: planning.probe.ProbePlanner
+# cost-landscape probe between a GD and a CEM run's final plans; no planning.
+# Use the same model_name, seed, n_evals, goal_source, goal_H as the two runs.
+horizon: 5            # set to goal_H by plan.py
+gd_run: ???           # results folder with final_actions.pt + episodes.jsonl
+cem_run: ???          # (relative paths: relative to where plan.py was launched)
+episodes: null        # explicit episode ids; null = up to max_eps where GD failed, CEM succeeded
+max_eps: 8
+sigmas: [0, 0.03, 0.1, 0.3, 1.0]
+M: 64                 # perturbations, drawn once and shared by every point, sigma, episode
+n_t: 61               # points along each line
+t_range: [-0.25, 1.25]
+chunk: 25             # rows per wm.rollout call
+seed: 0               # draws the perturbations and the random directions
+
+name: probe
