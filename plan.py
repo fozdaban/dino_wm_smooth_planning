@@ -338,6 +338,10 @@ class PlanWorkspace:
             obs_g=self.obs_g,
             actions=actions_init,
         )
+        # the returned plan, in normalized action units (not env units), shape
+        # (n_evals, horizon, action_dim); for MPC the time axis is all executed rounds
+        # concatenated. Saved to the run directory (hydra's cwd), like logs.json.
+        torch.save(actions.detach().cpu(), "final_actions.pt")
         logs, successes, _, _ = self.evaluator.eval_actions(
             actions.detach(), action_len, save_video=True, filename="output_final"
         )
