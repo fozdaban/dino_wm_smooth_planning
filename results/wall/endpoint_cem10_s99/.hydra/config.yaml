@@ -1,0 +1,26 @@
+ckpt_base_path: /home/cc/ckpt
+model_name: wall_single
+model_epoch: latest
+seed: 99
+n_evals: 50
+goal_source: random_state
+goal_H: 5
+n_plot_samples: 10
+debug_dset_init: false
+wm_eval_mode: false
+objective:
+  _target_: planning.objectives.create_objective_fn
+  alpha: 1
+  base: 2
+  mode: last
+planner:
+  _target_: planning.cem.CEMPlanner
+  horizon: 5
+  topk: 30
+  num_samples: 300
+  var_scale: 1
+  opt_steps: 10
+  eval_every: 1
+  name: cem
+  rollout_chunk: 100
+  oracle_stop: false
