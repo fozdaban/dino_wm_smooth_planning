@@ -1,0 +1,996 @@
+skip sgd_adam_lr0.1_randn_K8_S125_sig0.333_const (another worker has it)
+>>> 20:29 sgd_adam_lr0.1_randn_K8_S125_sig0.333_geom: planner.optimizer=adam planner.lr=0.1 planner.sample_type=randn planner.sigma0=0.333 planner.sigma_schedule=geom planner.sigma_min=0.0333 planner.K=8 planner.opt_steps=125
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/wandb/sdk/internal/internal_api.py:30: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import parse_version
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/pkg_resources/__init__.py:2825: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/pkg_resources/__init__.py:2825: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/Cython/Distutils/old_build_ext.py:15: DeprecationWarning: dep_util is Deprecated. Use functions from setuptools instead.
+  from distutils.dep_util import newer, newer_group
+Warning: Mujoco-based envs failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'mjrl'
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/glfw/__init__.py:914: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+pybullet build time: Jan 29 2025 23:20:52
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-open-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-umaze-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-medium-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-large-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-open-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-umaze-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-medium-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-large-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/dino_wm_smooth_planning/custom_resolvers.py:4: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path=None)
+[2026-11-12 20:29:56,694][__main__][INFO] - Planning result saved dir: /home/cc/dino_wm_smooth_planning/plan_outputs/20261112202952_sgd_adam_lr0.1_randn_K8_S125_sig0.333_geom_s99
+Loading wall dataset...
+Loaded 1920 rollouts
+[[102, 33, 1056, 1591, 354, 245, 790, 1323, 142, 1745, 1588, 1473, 38, 1192, 735, 832, 547, 1186, 843, 660, 869, 83, 695, 1629, 179, 1658, 157, 1758, 1747, 250, 312, 1361, 1163, 1798, 275, 1099, 1787, 964, 1066, 609, 1666, 774, 181, 1502, 407, 668, 593, 1623, 1101, 565, 1350, 1572, 1094, 512, 148, 809, 263, 1853, 908, 927, 626, 569, 1730, 757, 1574, 1866, 1107, 1706, 391, 1255, 947, 828, 1720, 1057, 19, 1364, 1575, 1914, 1562, 1909, 534, 973, 538, 1017, 646, 285, 309, 1884, 1059, 552, 697, 1702, 145, 819, 649, 665, 169, 1051, 171, 1529, 1470, 291, 1371, 1240, 1641, 1746, 1443, 1307, 1801, 369, 1365, 525, 167, 1121, 1430, 874, 528, 1459, 1617, 770, 359, 923, 507, 884, 1616, 1314, 1149, 1379, 891, 1442, 1047, 1887, 248, 1767, 1620, 283, 392, 1290, 1650, 242, 1399, 807, 159, 204, 775, 1827, 500, 1352, 700, 1265, 1102, 149, 1440, 1258, 1738, 347, 690, 468, 1726, 1234, 1126, 868, 1501, 621, 585, 1523, 121, 1108, 846, 1167, 1405, 114, 474, 1406, 195, 1144, 586, 384, 1680, 298, 308, 529, 901, 475, 992, 1811, 1655, 914, 1598, 560, 1452, 385, 1032, 1895, 756, 1893, 485, 1293, 1876, 378, 206, 61, 1762, 1335, 1779, 1062, 111, 550, 1357, 284, 1074, 880, 592, 712, 1454, 1660, 1067, 946, 1011, 193, 1838, 1072, 1065, 1267, 1217, 591, 678, 792, 180, 1313, 69, 84, 1603, 1775, 201, 1415, 457, 1359, 400, 1759, 1081, 554, 471, 1841, 446, 1670, 688, 140, 1600, 871, 1093, 460, 1831, 818, 940, 1128, 614, 1000, 987, 1048, 72, 465, 804, 1804, 826, 1006, 1129, 270, 954, 86, 107, 1744, 751, 1143, 1554, 1750, 556, 1692, 664, 943, 907, 1713, 881, 1793, 849, 972, 264, 1431, 1040, 1391, 680, 1864, 724, 1549, 455, 600, 389, 1301, 1262, 1073, 1216, 613, 314, 15, 657, 896, 549, 575, 719, 545, 937, 1585, 165, 1252, 338, 970, 1366, 1247, 1024, 14, 855, 212, 887, 977, 1225, 776, 10, 1903, 1423, 596, 726, 431, 959, 1159, 1033, 1458, 1196, 1526, 317, 1358, 454, 1647, 976, 773, 1786, 1462, 488, 41, 571, 1464, 599, 979, 864, 18, 306, 1299, 797, 332, 1424, 1286, 66, 51, 1230, 1527, 1042, 762, 219, 487, 1026, 1282, 1285, 1503, 1597, 1573, 758, 999, 30, 1215, 1315, 1227, 387, 1867, 1421, 220, 932, 1829, 26, 1822, 290, 1088, 1902, 429, 463, 197, 1156, 1539, 1491, 1027, 1901, 733, 1879, 833, 278, 1251, 1899, 1642, 73, 272, 1019, 1084, 1346, 1803, 845, 568, 286, 76, 956, 1237, 48, 939, 1601, 481, 1187, 176, 1231, 1545, 1664, 1244, 87, 47, 194, 1586, 1316, 1125, 1649, 1077, 995, 1665, 1428, 1219, 1712, 1038, 542, 998, 70, 929, 1648, 476, 886, 1134, 1733, 854, 853, 1283, 1432, 1723, 1269, 281, 1174, 110, 1685, 1868, 777, 1522, 353, 798, 1773, 409, 768, 1273, 1490, 221, 1154, 1499, 71, 1637, 720, 1850, 1198, 1755, 1915, 716, 1900, 1835, 672, 319, 1536, 226, 1472, 1602, 969, 492, 428, 895, 814, 1133, 62, 656, 1722, 1621, 1142, 1087, 524, 1590, 1030, 650, 1451, 1913, 1259, 1917, 544, 377, 862, 1202, 1177, 1274, 1123, 617, 605, 1106, 1855, 422, 1769, 362, 1721, 1329, 1206, 1506, 135, 1320, 217, 120, 1120, 1836, 710, 717, 1799, 1557, 722, 1694, 405, 375, 1034, 260, 1496, 411, 1672, 28, 637, 373, 1808, 134, 1012, 536, 1752, 983, 1135, 1576, 483, 13, 404, 841, 1172, 1041, 1843, 161, 847, 1369, 1910, 1782, 1671, 1376, 1856, 498, 806, 635, 1212, 438, 835, 1849, 1109, 1349, 1043, 2, 466, 610, 1165, 885, 951, 344, 300, 1807, 1908, 287, 1877, 705, 1872, 1581, 985, 328, 708, 730, 350, 307, 146, 840, 1180, 494, 16, 555, 1368, 1780, 779, 1771, 1203, 1754, 744, 863, 1684, 639, 1919, 738, 938, 1053, 618, 91, 1886, 1028, 472, 1050, 138, 131, 89, 416, 991, 1254, 467, 227, 1765, 1634, 1789, 1622, 1205, 1874, 839, 1151, 654, 1182, 815, 470, 670, 150, 718, 352, 1579, 879, 443, 1690, 32, 435, 1383, 501, 882, 1085, 1176, 1382, 1171, 686, 1140, 1105, 800, 1516, 1485, 516, 1475, 1434, 1911, 889, 239, 652, 1535, 1639, 335, 1325, 1784, 765, 663, 1224, 448, 1815, 739, 1812, 1076, 747, 1467, 732, 1654, 1828, 502, 1319, 1425, 1160, 1468, 368, 1732, 1248, 143, 808, 674, 713, 129, 1599, 288, 1005, 1643, 1729, 1918, 1064, 279, 1741, 406, 867, 729, 604, 1220, 750, 304, 936, 215, 1626, 1778, 1031, 1756, 305, 1699, 412, 1387, 1640, 210, 188, 253, 645, 1279, 349, 1898, 262, 1082, 213, 255, 1514, 1375, 576, 698, 986, 1119, 508, 1753, 104, 1296, 1380, 128, 163, 693, 1524, 924, 842, 812, 1348, 199, 1386, 1628, 1435, 1772, 817, 931, 334, 1360, 390, 1413, 1783, 944, 905, 1271, 1132, 1857, 35, 340, 1461, 506, 1150, 1455, 594, 1020, 1178, 1770, 1389, 1276, 1355, 1228, 990, 1480, 1100, 1326, 282, 1321, 852, 200, 1146, 1253, 49, 1682, 1221, 1840, 1525, 1037, 1170, 1800, 648, 1243, 266, 926, 782, 1667, 984, 570, 1289, 1860, 893, 1630, 479, 339, 246, 866, 1631, 211, 684, 60, 125, 1513, 836, 43, 1450, 515, 1256, 244, 1063, 1693, 913, 966, 54, 432, 1869, 254, 1916, 577, 1096, 540, 1075, 1261, 1871, 1587, 381, 634, 205, 269, 489, 1890, 37, 746, 386, 551, 1414, 953, 1403, 709, 622, 1497, 1561, 1324, 158, 624, 426, 1466, 44, 267, 994, 318, 1398, 397, 95, 786, 81, 1332, 837, 289, 865, 965, 67, 1696, 816, 1044, 820, 229, 1400, 1362, 491, 1139, 1873, 1338, 559, 1016, 1021, 1436, 1002, 1797, 40, 224, 1615, 1385, 941, 1308, 978, 794, 231, 834, 1675, 1736, 31, 1181, 562, 831, 1272, 767, 372, 1825, 1669, 760, 380, 1343, 42, 1351, 1337, 1441, 268, 1644, 1015, 52, 1469, 1861, 1481, 22, 1605, 361, 1381, 410, 1333, 975, 1046, 1595, 348, 1768, 366, 1281, 772, 974, 495, 358, 590, 187, 631, 1695, 687, 1328, 572, 588, 1805, 620, 1577, 1449, 1433, 1659, 320, 418, 346, 602, 573, 1709, 1300, 113, 427, 1891, 1341, 236, 1001, 370, 723, 1092, 1560, 379, 662, 79, 850, 1704, 824, 627, 436, 666, 1103, 653, 945, 1370, 1232, 587, 234, 103, 1858, 934, 1420, 123, 1818, 1310, 499, 1739, 1493, 1847, 1553, 740, 124, 1260, 1378, 1842, 1777, 1816, 1543, 749, 608, 1563, 996, 25, 101, 90, 459, 337, 122, 580, 829, 533, 292, 452, 1614, 1183, 1322, 1278, 521, 1136, 1190, 96, 259, 1645, 1008, 1888, 342, 445, 1504, 162, 382, 1894, 784, 1404, 1531, 1312, 444, 1097, 1447, 1280, 872, 168, 50, 1687, 1593, 1610, 98, 1242, 769, 642, 1309, 888, 433, 302, 1263, 1169, 1656, 1295, 243, 921, 1438, 1161, 877, 640, 1541, 24, 703, 980, 1173, 935, 1519, 440, 1512, 1137, 822, 1014, 310, 511, 583, 1518, 458, 274, 109, 856, 522, 11, 462, 1236, 232, 633, 1567, 1241, 989, 1725, 280, 875, 1083, 1833, 324, 1566, 249, 172, 696, 1505, 1010, 1477, 1327, 910, 861, 88, 99, 357, 437, 80, 1292, 764, 175, 395, 1716, 699, 1483, 1717, 673, 623, 1697, 1479, 1060, 1651, 553, 981, 218, 1110, 185, 77, 900, 371, 904, 1390, 21, 1882, 595, 1718, 1476, 152, 420, 918, 192, 1679, 1484, 1863, 787, 567, 851, 441, 530, 517, 1419, 1388, 329, 301, 1330, 876, 478, 1530, 676, 1844, 403, 74, 647, 728, 230, 519, 256, 737, 235, 1796, 182, 858, 504, 1287, 1124, 1229, 294, 625, 894, 759, 1544, 330, 1711, 505, 903, 1055, 1238, 1397, 1686, 136, 1275, 1580, 1584, 59, 1112, 1636, 166, 655, 1520, 1540, 374, 496, 414, 1226, 154, 860, 531, 1465, 1345, 1662, 1284, 669, 1627, 1408, 36, 191, 1748, 7, 1498, 802, 325, 957, 208, 228, 1201, 950, 1318, 155, 948, 133, 920, 442, 225, 611, 1633, 796, 667, 1652, 1304, 1609, 1611, 527, 1427, 1354, 689, 930, 870, 925, 56, 1402, 100, 189, 1068, 1737, 322, 523, 247, 971, 1445, 55, 579, 1374, 1571, 1521, 890, 785, 58, 671, 1608, 1168, 1742, 899, 299, 778, 1542, 761, 566, 46, 1708, 1719, 351, 1392, 651, 1764, 811, 449, 922, 261, 1036, 694, 127, 1114, 707, 1487, 1852, 1802, 873, 174, 1865, 1710, 763, 164, 1632, 345, 539, 1141, 805, 919, 911, 184, 548, 1422, 1625, 1155, 399, 1795, 1845, 1889, 1565, 45, 603, 1444, 1517, 1823, 1246, 477, 64, 1164, 1411, 781, 8, 1635, 1583, 1200, 241, 151, 177, 333, 629, 1453, 293, 1760, 636, 1239, 1115, 727, 273, 1394, 1266, 1184, 1619, 1743, 313, 1904, 982, 1367, 153, 564, 1806, 331, 1862, 1848, 606, 1264, 57, 97, 1774, 1814, 1086, 1029, 393, 1488, 85, 1509, 1550, 725, 1638, 1846, 1342, 1728, 993, 421, 1781, 681, 473, 1604, 364, 1613, 679, 780, 1885, 581, 1130, 116, 823, 355, 736, 75, 398, 557, 1740, 1515, 1596, 1250, 641, 1683, 198, 1363, 589, 1223, 1209, 417, 209, 1810, 9, 535, 1500, 1881, 1208, 909, 0, 702, 1897, 598, 1189, 748, 675, 1691, 1152, 755, 4, 1416, 830, 439, 1222, 1340, 692, 1003, 34, 356, 170, 1761, 1657, 1578, 401, 795, 1507, 997, 644, 1166, 447, 518, 563, 336, 1820, 343, 597, 844, 1058, 497, 311, 1463, 754, 1218, 1191, 1148, 1612, 1022, 1344, 1776, 942, 906, 1409, 1098, 130, 1418, 1830, 190, 1303, 1749, 607, 825, 92, 677, 628, 326, 715, 949, 27, 1537, 1025, 1439, 1277, 396, 1270, 53, 558, 584, 616, 630, 1533, 532, 1113, 612, 1080, 173, 1090, 838, 17, 897, 1306, 1311, 1131, 388, 1118, 1528, 1426, 1257, 1460, 1714, 1407, 144, 1734, 258, 1731, 526, 367, 1834, 126, 1104, 638, 791, 265, 223, 461, 1457, 139, 456, 1905, 1663, 1412, 1568, 1763, 883, 1661, 1678, 493, 1606, 1813, 541, 1757, 276, 296, 1673, 222, 1707, 183, 257, 615, 1478, 742, 376, 810, 661, 365, 156, 1298, 1701, 1653, 202, 1334, 1197, 1482, 106, 323, 1448, 1558, 1179, 1854, 902, 1049, 297, 216, 1268, 277, 1336, 1393, 65, 1456, 1052, 5, 1735, 1495, 1175, 988, 117, 721, 1788, 315, 1819, 1305, 1794, 520, 543, 1214, 917, 731, 1091, 1147, 1070, 68, 892, 1486, 464, 783, 115, 1883, 1372, 752, 383, 1122, 582, 1039, 1213, 574, 1594, 1870, 1111, 1792, 706, 1674, 233, 1607, 691, 1417, 1071, 711, 1538, 252, 741, 1396, 1211, 1429, 1906, 513, 799, 1384, 1138, 1688, 1681, 1045, 961, 743, 1824, 619, 766, 1727, 147, 827, 1117, 1547, 1892, 39, 82, 1546, 963, 178, 658, 1592, 425, 484, 415, 1204, 1331, 1207, 561, 912, 451, 1548, 1494, 1210, 1676, 685, 1291, 793, 632, 1018], [1054, 207, 1715, 1233, 514, 238, 1377, 1677, 878, 1624, 1145, 1009, 469, 962, 1194, 93, 1556, 1851, 1569, 1089, 745, 423, 23, 821, 29, 1401, 789, 1791, 788, 1079, 1347, 503, 1199, 753, 848, 1294, 801, 682, 955, 112, 1188, 402, 1878, 1817, 1288, 1821, 1245, 1302, 1007, 1705, 271, 510, 1510, 327, 1127, 486, 1555, 1004, 1589, 1511, 1700, 1373, 1668, 341, 1489, 1790, 1492, 321, 659, 578, 303, 118, 960, 453, 160, 683, 1832, 434, 701, 928, 480, 1446, 1552, 704, 94, 1317, 1410, 394, 186, 771, 859, 1395, 1646, 1570, 1353, 714, 1297, 360, 1153, 1185, 1766, 1471, 1013, 1356, 1437, 78, 63, 1618, 537, 482, 3, 450, 1339, 490, 857, 251, 898, 916, 546, 1809, 1689, 1078, 1069, 1, 1035, 1534, 1158, 203, 1837, 1095, 1235, 295, 933, 1474, 1559, 240, 105, 419, 1751, 1061, 1896, 1162, 1508, 1195, 237, 509, 1875, 6, 1564, 1698, 1907, 20, 1023, 1157, 1724, 132, 1912, 108, 1839, 734, 413, 316, 1249, 1880, 430, 915, 952, 813, 1532, 1116, 1859, 137, 1703, 141, 1785, 1582, 643, 119, 12, 968, 1193, 408, 214, 601, 967, 803, 1551, 363, 424, 958, 1826, 196]]Using cache found in /home/cc/.cache/torch/hub/facebookresearch_dinov2_b48308a394a04ccb9c4dd3a1f0a4daa1ce0579b8
+
+Resuming from epoch 65: /home/cc/ckpt/outputs/wall_single/checkpoints/model_latest.pth
+[2026-11-12 20:29:58,118][dinov2][INFO] - using MLP layer as FFN
+num_action_repeat: 1
+num_proprio_repeat: 1
+proprio encoder: ProprioceptiveEmbedding(
+  (patch_embed): Conv1d(2, 10, kernel_size=(1,), stride=(1,))
+)
+action encoder: ProprioceptiveEmbedding(
+  (patch_embed): Conv1d(10, 10, kernel_size=(1,), stride=(1,))
+)
+proprio_dim: 10, after repeat: 10
+action_dim: 10, after repeat: 10
+emb_dim: 404
+Model emb_dim:  404
+eval_seed:  [1, 100, 199, 298, 397, 496, 595, 694, 793, 892, 991, 1090, 1189, 1288, 1387, 1486, 1585, 1684, 1783, 1882, 1981, 2080, 2179, 2278, 2377, 2476, 2575, 2674, 2773, 2872, 2971, 3070, 3169, 3268, 3367, 3466, 3565, 3664, 3763, 3862, 3961, 4060, 4159, 4258, 4357, 4456, 4555, 4654, 4753, 4852]
+Dumped plan targets to /home/cc/dino_wm_smooth_planning/plan_outputs/20261112202952_sgd_adam_lr0.1_randn_K8_S125_sig0.333_geom_s99/plan_targets.pkl
+Success rate:  0.0
+{'success': array([False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([41.74038439, 20.884091  , 38.45356272, 35.3554506 , 26.82054581,
+       42.2326406 , 26.22877793, 44.52307263,  4.79917374, 47.13157627,
+       35.95733808, 34.00833508, 46.82641395, 30.29273451, 39.26103562,
+       27.65486106, 43.20621827, 13.34536454, 33.89318367, 44.89953914,
+       25.86967061, 39.18949318, 38.03168359, 27.08928128, 14.33475572,
+       50.61349224, 28.59310261, 47.85572062, 36.06288248, 24.5504031 ,
+       29.42279991, 23.90124797, 20.19633866, 23.28183981, 23.80134567,
+       36.66293162, 21.60985109, 28.69385949, 52.86117352, 39.07336359,
+       51.41886397, 27.79012231, 34.95903524, 36.94527936, 27.92584837,
+       28.26601361, 42.28961901, 50.44403882, 22.52808473, 27.20437414])}
+Success rate:  0.04
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False]), 'state_dist': array([20.59897648,  9.62412379, 16.4964924 ,  6.61343807, 13.61022022,
+       21.20569334, 18.77872518,  8.11845643,  0.81863128, 33.25441003,
+       14.50629031,  6.70958929, 21.89821186,  5.98868991,  8.15108114,
+       16.85887081, 26.32697742,  8.45495548,  5.33798781, 17.01601498,
+        6.20972087, 17.81079222, 22.69661077, 24.73279342, 12.23062979,
+       38.09090821, 21.68380573, 27.89650768, 16.69808657, 22.63350842,
+       17.97272389, 12.40898826, 11.00618679,  8.85950059,  8.6314139 ,
+        8.45741106, 10.23588066,  4.73295532, 12.49477171, 23.50142382,
+       23.10355458, 21.35746783, 14.09220752, 28.48937462,  3.36677662,
+       20.01619667, 27.60106345, 23.90009331,  9.53194677, 10.19666917])}
+Success rate:  0.12
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False,  True, False,
+       False, False, False, False, False, False, False, False,  True,
+       False, False, False,  True,  True]), 'state_dist': array([22.74373953,  5.16855348, 16.53170374,  8.97739243, 13.46744798,
+       20.98531295, 18.25373108, 18.21491279,  2.25595136, 10.80752981,
+       10.61413867,  6.93004171,  5.3504115 ,  7.62436396, 21.43767041,
+       16.90959287, 15.38846821,  2.58836253,  6.29370706, 16.44990049,
+        5.09102436, 16.6599727 , 24.23684671, 23.52749865, 12.08347623,
+        8.15181666,  7.24476062,  5.16841435, 17.16861142, 22.89453331,
+       17.61168796, 12.76714614,  5.28641436,  6.52105582,  3.34582804,
+        8.13514256,  6.72528279,  7.37354736, 11.75452139, 27.58725273,
+       28.88151294, 21.17359627, 14.6877414 , 29.81348658,  1.79041502,
+       17.95767622, 27.60106345, 12.32498016,  3.06420183,  0.86836933])}
+Success rate:  0.24
+{'success': array([False, False, False,  True, False, False, False, False,  True,
+       False,  True, False, False, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False, False,
+       False, False, False, False, False, False,  True,  True,  True,
+       False, False, False, False, False, False, False, False,  True,
+       False, False, False,  True,  True]), 'state_dist': array([21.83357311,  4.6494699 , 16.1842745 ,  1.18563653,  5.64205832,
+       21.65222111, 18.50985388,  5.82772779,  2.72472578, 31.72927422,
+        1.19724095,  6.31319653,  8.36504383,  7.78342861, 22.4887662 ,
+       17.00560164,  7.26381085,  1.54590287,  2.61069413, 16.44630254,
+        2.09597396, 16.30765213, 24.23684671, 19.58918787, 11.7878763 ,
+        6.08572388,  5.37585057,  5.54999078, 17.28381944, 23.73456699,
+       17.61463743, 13.76814257,  6.78799729,  2.09157029,  0.48480625,
+        3.19745995,  5.65837654,  6.82241536,  5.39109944, 23.03900807,
+       27.35774083, 21.17761694, 16.28986155, 28.57495295,  2.24381183,
+       20.12863978, 27.60106345,  8.93504658,  3.817849  ,  3.47764426])}
+Success rate:  0.32
+{'success': array([False,  True, False, False,  True, False, False,  True,  True,
+        True, False, False,  True, False, False, False, False,  True,
+       False, False,  True, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True,  True,  True,
+        True, False, False, False, False, False, False, False,  True,
+       False, False, False,  True,  True]), 'state_dist': array([21.46072862,  2.22310989, 16.47375327,  5.55650969,  3.91798745,
+       22.62812582, 18.49181273,  4.32545489,  0.75002653,  1.61389524,
+        4.51300973,  6.41744177,  3.17317764,  7.64738918, 23.26522211,
+       18.08355863,  8.01681213,  3.04271651,  6.9129333 , 15.21986629,
+        2.98327671, 16.88437939, 24.56744655, 21.73505085, 12.11417189,
+        5.1648656 ,  5.98816907,  4.88586269, 17.16856969, 23.86365209,
+       17.90211618, 12.95377523,  0.6100239 ,  3.49724642,  2.23893335,
+        2.23537259,  2.77492144,  6.30342748,  4.8288949 , 22.92406467,
+       27.83262026, 21.35834459, 17.34087874, 29.10758435,  3.1165373 ,
+       17.09948261, 27.60106345,  7.51778215,  3.10399611,  2.64539259])}
+Success rate:  0.28
+{'success': array([False, False, False, False,  True, False, False, False,  True,
+        True,  True, False,  True, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False,  True,
+       False, False, False, False, False,  True,  True, False,  True,
+       False, False, False, False, False, False, False, False,  True,
+       False, False, False, False,  True]), 'state_dist': array([21.09083909,  4.62843063, 16.35189104,  4.54819256,  2.83142444,
+       11.40610833, 18.75361846,  4.82123433,  0.6349109 ,  2.03636271,
+        3.45038228,  8.18002325,  3.61376207,  7.79269349, 22.86349112,
+       17.36905833,  6.22533358,  2.47836772,  3.16987407, 16.12840975,
+        1.95996461, 18.40526702, 24.50678   , 21.80462455, 11.69308423,
+        5.63629749,  4.18279321,  5.13881762, 17.1717148 , 22.82995361,
+       18.12961066, 12.91074126,  1.56036222,  1.21369595,  4.78882637,
+        0.87462721,  5.37902216,  5.1206333 , 27.56759877, 23.72998492,
+       25.2155597 , 21.6077224 , 16.26797662, 29.05228848,  3.22517619,
+       17.11583467, 27.60106345,  7.8996216 ,  6.64167518,  2.33740173])}
+Success rate:  0.32
+{'success': array([False, False, False,  True,  True, False, False, False,  True,
+        True,  True, False,  True, False, False, False, False,  True,
+       False, False,  True, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True,  True,  True,
+        True,  True, False, False, False, False, False, False,  True,
+       False, False, False, False,  True]), 'state_dist': array([20.25432041,  5.19026767, 16.13418903,  4.37708274,  4.33730645,
+       12.96178547, 19.54046556, 23.58057912,  1.354183  ,  1.11674431,
+        2.21925956,  8.56883626,  3.67469015,  7.70287305, 22.7732847 ,
+       16.83879239,  6.32170535,  0.96104386,  6.88471351, 15.19685147,
+        1.25516905, 19.56587951, 24.24343368, 21.820608  , 12.35444203,
+        7.21603142,  4.72333666,  6.53168402, 17.22743491, 22.78347312,
+       17.51127518, 13.11442541,  2.54821956,  1.96486178,  3.9879899 ,
+        1.17719515,  4.1263067 ,  3.16681822, 27.50010172, 24.37212851,
+        6.343741  , 21.75566204, 16.91272409, 28.77011104,  3.21201597,
+       15.91087214, 27.84217217,  9.64927185, 25.89693556,  1.77872454])}
+Success rate:  0.32
+{'success': array([False, False, False,  True, False, False, False, False,  True,
+        True,  True, False,  True, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False,  True,
+       False, False, False, False, False, False,  True,  True,  True,
+        True,  True, False, False, False, False, False, False,  True,
+       False, False, False, False,  True]), 'state_dist': array([21.00539339,  6.55644693, 17.27817334,  3.90903767,  6.28993885,
+       11.63335631, 20.53530666, 23.36745672,  0.58447224,  1.53157788,
+        1.94235509,  9.05867471,  3.78931679,  7.83445563, 23.86312852,
+       16.39809351,  6.49764954,  0.40037605,  4.17257045, 15.8498732 ,
+        1.04699167, 20.62547228, 24.49793313, 21.24095438, 12.03304335,
+        6.39454649,  4.2730937 ,  5.76832585, 17.26679859, 24.27532475,
+       18.42232728, 13.10104969,  8.76930751,  1.9738612 ,  2.7337766 ,
+        1.29770404,  4.29114897,  0.40076767, 27.51314106, 24.89849198,
+        6.5969661 , 21.65639005, 16.76691652, 28.73531402,  3.06801044,
+       15.96266005, 27.84217217,  7.72963155, 25.88305213,  2.00197282])}
+Success rate:  0.32
+{'success': array([False, False, False,  True, False, False, False, False,  True,
+        True,  True, False,  True, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False,  True,
+       False, False, False, False, False,  True,  True,  True,  True,
+        True,  True, False, False, False, False, False, False,  True,
+       False, False, False, False, False]), 'state_dist': array([21.12197244,  7.36028948, 18.51564318,  3.3593253 ,  6.10471275,
+       10.53303236, 20.99119255, 23.33074827,  1.13570258,  2.47424102,
+        2.0527693 ,  9.20298138,  4.05092865,  7.88709122, 23.85186147,
+       16.49886621,  6.54751464,  0.35119467,  2.77994597, 15.47659729,
+        1.19563061, 21.75808494, 24.49793313, 30.71871723, 11.65781468,
+        6.04816282,  4.3683533 ,  5.89186342, 17.32555956, 26.26479237,
+       17.63040801, 13.36007182,  2.49156329,  1.83761671,  0.4702957 ,
+        0.8825547 ,  3.73572348,  0.87842469, 27.53935995, 25.66297041,
+        6.93760499, 22.00270338, 16.48606226, 28.44127952,  4.48836799,
+       15.41484358, 27.60106345,  7.30474936,  6.22569804, 16.52215422])}
+Success rate:  0.3
+{'success': array([False, False, False,  True, False, False, False, False,  True,
+       False,  True, False,  True, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False,  True,
+       False, False, False, False, False,  True,  True,  True, False,
+        True,  True, False, False, False, False, False, False,  True,
+       False, False, False, False,  True]), 'state_dist': array([21.3975675 ,  7.20374491, 19.54071388,  3.42389909,  8.17918658,
+        9.80690307, 20.17423726, 23.55564592,  0.62665734, 30.57629935,
+        2.21040626,  9.34992588,  4.22317127,  7.96754104, 23.91281457,
+       17.33715938,  6.25264308,  0.657668  ,  3.42587808, 14.96037329,
+        1.58842695, 22.17601985, 24.49793313, 30.64199044, 12.41959272,
+        5.94593732,  4.38190493,  6.41466519, 17.67630763, 27.92977365,
+       17.684369  , 13.09912797,  1.76642497,  2.08862062,  0.60338329,
+        7.77416791,  3.9483814 ,  1.62480168, 27.51722757, 26.17765162,
+        6.515035  , 22.18260249, 17.40986848, 29.15868745,  4.26971264,
+       19.33755335, 27.84217217,  4.69762146,  5.84595905,  2.29350306])}
+Success rate:  0.26
+{'success': array([False, False, False,  True, False, False, False, False,  True,
+       False,  True, False,  True, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True,  True,  True,
+        True,  True, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([22.18747885,  7.36019065, 20.5398197 ,  3.49449926,  7.05108415,
+        8.9587989 , 19.47983096, 25.10055008,  0.62238851, 30.73222656,
+        2.52569256,  9.4173294 ,  4.36396469,  8.61994179, 23.49495525,
+       16.41195934,  5.30415286,  0.99873994,  3.09148255, 15.1900108 ,
+        1.54292437, 21.94630184, 24.49793313, 30.92709454, 13.03007194,
+        6.06355663,  4.5004411 ,  6.2358108 , 18.07456075, 28.62125509,
+       17.63776873, 13.18571293,  1.86609586,  2.57383521,  3.61456937,
+        4.19202597,  3.69828715,  1.58895901, 27.51423711, 26.10980079,
+        6.64411812, 22.14007364, 17.07449369, 31.21412866, 15.9144425 ,
+       19.79392997, 27.84217217,  4.51804287,  6.00376343, 17.10286422])}
+Success rate:  0.26
+{'success': array([False, False, False,  True, False, False, False, False,  True,
+       False,  True, False, False, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True,  True,  True,
+        True,  True, False, False, False, False, False, False, False,
+       False, False,  True, False, False]), 'state_dist': array([22.84049655,  8.56250271, 21.37361406,  3.7809048 ,  7.81931107,
+        8.1125422 , 19.27753379, 22.74899568,  1.90914307, 30.86938388,
+        2.29846476,  9.67757969,  4.5927442 ,  8.92843262, 22.95333926,
+       16.5057883 ,  6.7635703 ,  2.21650846,  2.89734921, 15.62424433,
+        1.23039317, 22.08373363, 24.49793313, 26.69691674, 13.6622988 ,
+        6.12797898,  4.6459401 ,  6.20184301, 18.84717299, 29.24489075,
+       17.67463975, 12.06103327,  1.79313031,  1.28083505,  3.64901302,
+        4.36603842,  3.68198915,  2.73323716, 27.50633885, 25.73472744,
+        6.87307629, 22.07536357, 17.40875904, 32.14425074, 15.9144425 ,
+       18.7616263 , 27.83335795,  4.31573068,  6.11731877, 16.74136509])}
+Success rate:  0.28
+{'success': array([False, False, False,  True, False, False, False, False,  True,
+       False,  True, False, False, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True,  True,  True,
+        True,  True, False, False, False, False, False, False, False,
+       False, False,  True, False,  True]), 'state_dist': array([23.51148169, 10.28276431, 21.78877372,  4.03800204,  7.0104872 ,
+        7.78424384, 18.91342213, 22.37953634,  2.07851476, 31.04520826,
+        2.04159665,  9.88493593,  4.6757369 ,  9.01197969, 23.13051796,
+       18.14436834,  6.30121378,  2.32472573,  2.87142758, 16.00423606,
+        1.42281412, 22.46344642, 24.49793313, 29.48480544, 14.01713074,
+        6.18430043,  4.7654262 ,  5.53512135, 19.14584714, 29.86107881,
+       17.68908734, 12.76474414,  2.29339404,  0.80931952,  3.49486436,
+        2.93750971,  3.69048915,  1.50408741, 27.47043471, 24.86121911,
+        7.57002549, 21.95506167, 17.42122692, 33.92209496, 15.9144425 ,
+       18.04719011, 27.84217217,  4.22144276,  6.26003157,  1.96206722])}
+Success rate:  0.28
+{'success': array([False, False, False,  True, False, False, False, False,  True,
+       False,  True, False, False, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True,  True,  True,
+        True,  True, False, False, False, False, False, False, False,
+       False, False,  True, False,  True]), 'state_dist': array([23.92674216, 10.48418124, 21.89093154,  4.24202897,  7.21716108,
+        7.93841252, 18.88114635, 22.82259167,  1.99784056, 30.96305488,
+        2.13873083,  9.62025686,  4.73101977,  9.74323773, 22.58077899,
+       19.23256405,  4.99760381,  2.26253662,  2.8583393 , 16.07390563,
+        1.70306182, 22.59510393, 24.49793313, 29.5869253 , 14.05070951,
+        6.12831066,  4.82817409,  5.53791143, 18.92720797, 30.07430426,
+       17.69250338, 12.89223351,  2.31801947,  0.69524524,  3.50335907,
+        1.44348186,  3.63866199,  1.67775652, 27.46901023, 25.1772422 ,
+        7.90290156, 21.85454874, 17.39463148, 34.45072564, 15.9144425 ,
+       18.01190985, 27.90938077,  4.04432306,  6.55269684,  2.09888909])}
+run_stats: {'wall_clock_s': 1607.5408174991608, 'plan_fwd': 50000, 'plan_fwd_grad': 50000, 'plan_equiv': 150000, 'enc_images': 50050, 'pred_fwd': 250000, 'pred_fwd_grad': 250000, 'pred_equiv': 750000, 'eval_s': 71.20521378517151, 'eval_calls': 14, 'plan_s': 1536.3356037139893, 'oracle_stop': False, 'peak_gpu_mb': 6005.98583984375, 'gpu': 'Quadro RTX 6000', 'git_commit': '3b27b979c2ce292ce9cbcb2045c679ef41e1895f', 'git_dirty': False, 'num_hist': 1, 'wm_eval_mode': False, 'predictor_training_as_loaded': False, 'predictor_dropout_active': False, 'frameskip': 5, 'final_success_rate': 0.28}
+warning: probe.npz missing in plan_outputs/20261112202952_sgd_adam_lr0.1_randn_K8_S125_sig0.333_geom_s99
+  - model_name=wall_single
+  - planner=smooth_gd
+  - goal_source=random_state
+  - goal_H=5
+  - n_evals=50
+  - seed=99
+  - ckpt_base_path=/home/cc/ckpt
+  - +planner.oracle_stop=false
+  - +planner.episode_chunk=25
+  - planner.optimizer=adam
+  - planner.lr=0.1
+  - planner.sample_type=randn
+  - planner.sigma0=0.333
+  - planner.sigma_schedule=geom
+  - planner.sigma_min=0.0333
+  - planner.K=8
+  - planner.opt_steps=125
+saved plan_outputs/20261112202952_sgd_adam_lr0.1_randn_K8_S125_sig0.333_geom_s99 -> results/wall/sgd_adam_lr0.1_randn_K8_S125_sig0.333_geom_s99
+skip sgd_adam_lr0.1_randn_K8_S125_sig1_const (another worker has it)
+>>> 20:56 sgd_adam_lr0.1_randn_K8_S125_sig1_geom: planner.optimizer=adam planner.lr=0.1 planner.sample_type=randn planner.sigma0=1 planner.sigma_schedule=geom planner.sigma_min=0.1 planner.K=8 planner.opt_steps=125
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/wandb/sdk/internal/internal_api.py:30: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import parse_version
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/pkg_resources/__init__.py:2825: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/pkg_resources/__init__.py:2825: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/Cython/Distutils/old_build_ext.py:15: DeprecationWarning: dep_util is Deprecated. Use functions from setuptools instead.
+  from distutils.dep_util import newer, newer_group
+Warning: Mujoco-based envs failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'mjrl'
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/glfw/__init__.py:914: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+pybullet build time: Jan 29 2025 23:20:52
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-open-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-umaze-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-medium-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-large-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-open-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-umaze-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-medium-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-large-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/dino_wm_smooth_planning/custom_resolvers.py:4: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path=None)
+[2026-11-12 20:56:57,107][__main__][INFO] - Planning result saved dir: /home/cc/dino_wm_smooth_planning/plan_outputs/20261112205653_sgd_adam_lr0.1_randn_K8_S125_sig1_geom_s99
+Loading wall dataset...
+Loaded 1920 rollouts
+[[102, 33, 1056, 1591, 354, 245, 790, 1323, 142, 1745, 1588, 1473, 38, 1192, 735, 832, 547, 1186, 843, 660, 869, 83, 695, 1629, 179, 1658, 157, 1758, 1747, 250, 312, 1361, 1163, 1798, 275, 1099, 1787, 964, 1066, 609, 1666, 774, 181, 1502, 407, 668, 593, 1623, 1101, 565, 1350, 1572, 1094, 512, 148, 809, 263, 1853, 908, 927, 626, 569, 1730, 757, 1574, 1866, 1107, 1706, 391, 1255, 947, 828, 1720, 1057, 19, 1364, 1575, 1914, 1562, 1909, 534, 973, 538, 1017, 646, 285, 309, 1884, 1059, 552, 697, 1702, 145, 819, 649, 665, 169, 1051, 171, 1529, 1470, 291, 1371, 1240, 1641, 1746, 1443, 1307, 1801, 369, 1365, 525, 167, 1121, 1430, 874, 528, 1459, 1617, 770, 359, 923, 507, 884, 1616, 1314, 1149, 1379, 891, 1442, 1047, 1887, 248, 1767, 1620, 283, 392, 1290, 1650, 242, 1399, 807, 159, 204, 775, 1827, 500, 1352, 700, 1265, 1102, 149, 1440, 1258, 1738, 347, 690, 468, 1726, 1234, 1126, 868, 1501, 621, 585, 1523, 121, 1108, 846, 1167, 1405, 114, 474, 1406, 195, 1144, 586, 384, 1680, 298, 308, 529, 901, 475, 992, 1811, 1655, 914, 1598, 560, 1452, 385, 1032, 1895, 756, 1893, 485, 1293, 1876, 378, 206, 61, 1762, 1335, 1779, 1062, 111, 550, 1357, 284, 1074, 880, 592, 712, 1454, 1660, 1067, 946, 1011, 193, 1838, 1072, 1065, 1267, 1217, 591, 678, 792, 180, 1313, 69, 84, 1603, 1775, 201, 1415, 457, 1359, 400, 1759, 1081, 554, 471, 1841, 446, 1670, 688, 140, 1600, 871, 1093, 460, 1831, 818, 940, 1128, 614, 1000, 987, 1048, 72, 465, 804, 1804, 826, 1006, 1129, 270, 954, 86, 107, 1744, 751, 1143, 1554, 1750, 556, 1692, 664, 943, 907, 1713, 881, 1793, 849, 972, 264, 1431, 1040, 1391, 680, 1864, 724, 1549, 455, 600, 389, 1301, 1262, 1073, 1216, 613, 314, 15, 657, 896, 549, 575, 719, 545, 937, 1585, 165, 1252, 338, 970, 1366, 1247, 1024, 14, 855, 212, 887, 977, 1225, 776, 10, 1903, 1423, 596, 726, 431, 959, 1159, 1033, 1458, 1196, 1526, 317, 1358, 454, 1647, 976, 773, 1786, 1462, 488, 41, 571, 1464, 599, 979, 864, 18, 306, 1299, 797, 332, 1424, 1286, 66, 51, 1230, 1527, 1042, 762, 219, 487, 1026, 1282, 1285, 1503, 1597, 1573, 758, 999, 30, 1215, 1315, 1227, 387, 1867, 1421, 220, 932, 1829, 26, 1822, 290, 1088, 1902, 429, 463, 197, 1156, 1539, 1491, 1027, 1901, 733, 1879, 833, 278, 1251, 1899, 1642, 73, 272, 1019, 1084, 1346, 1803, 845, 568, 286, 76, 956, 1237, 48, 939, 1601, 481, 1187, 176, 1231, 1545, 1664, 1244, 87, 47, 194, 1586, 1316, 1125, 1649, 1077, 995, 1665, 1428, 1219, 1712, 1038, 542, 998, 70, 929, 1648, 476, 886, 1134, 1733, 854, 853, 1283, 1432, 1723, 1269, 281, 1174, 110, 1685, 1868, 777, 1522, 353, 798, 1773, 409, 768, 1273, 1490, 221, 1154, 1499, 71, 1637, 720, 1850, 1198, 1755, 1915, 716, 1900, 1835, 672, 319, 1536, 226, 1472, 1602, 969, 492, 428, 895, 814, 1133, 62, 656, 1722, 1621, 1142, 1087, 524, 1590, 1030, 650, 1451, 1913, 1259, 1917, 544, 377, 862, 1202, 1177, 1274, 1123, 617, 605, 1106, 1855, 422, 1769, 362, 1721, 1329, 1206, 1506, 135, 1320, 217, 120, 1120, 1836, 710, 717, 1799, 1557, 722, 1694, 405, 375, 1034, 260, 1496, 411, 1672, 28, 637, 373, 1808, 134, 1012, 536, 1752, 983, 1135, 1576, 483, 13, 404, 841, 1172, 1041, 1843, 161, 847, 1369, 1910, 1782, 1671, 1376, 1856, 498, 806, 635, 1212, 438, 835, 1849, 1109, 1349, 1043, 2, 466, 610, 1165, 885, 951, 344, 300, 1807, 1908, 287, 1877, 705, 1872, 1581, 985, 328, 708, 730, 350, 307, 146, 840, 1180, 494, 16, 555, 1368, 1780, 779, 1771, 1203, 1754, 744, 863, 1684, 639, 1919, 738, 938, 1053, 618, 91, 1886, 1028, 472, 1050, 138, 131, 89, 416, 991, 1254, 467, 227, 1765, 1634, 1789, 1622, 1205, 1874, 839, 1151, 654, 1182, 815, 470, 670, 150, 718, 352, 1579, 879, 443, 1690, 32, 435, 1383, 501, 882, 1085, 1176, 1382, 1171, 686, 1140, 1105, 800, 1516, 1485, 516, 1475, 1434, 1911, 889, 239, 652, 1535, 1639, 335, 1325, 1784, 765, 663, 1224, 448, 1815, 739, 1812, 1076, 747, 1467, 732, 1654, 1828, 502, 1319, 1425, 1160, 1468, 368, 1732, 1248, 143, 808, 674, 713, 129, 1599, 288, 1005, 1643, 1729, 1918, 1064, 279, 1741, 406, 867, 729, 604, 1220, 750, 304, 936, 215, 1626, 1778, 1031, 1756, 305, 1699, 412, 1387, 1640, 210, 188, 253, 645, 1279, 349, 1898, 262, 1082, 213, 255, 1514, 1375, 576, 698, 986, 1119, 508, 1753, 104, 1296, 1380, 128, 163, 693, 1524, 924, 842, 812, 1348, 199, 1386, 1628, 1435, 1772, 817, 931, 334, 1360, 390, 1413, 1783, 944, 905, 1271, 1132, 1857, 35, 340, 1461, 506, 1150, 1455, 594, 1020, 1178, 1770, 1389, 1276, 1355, 1228, 990, 1480, 1100, 1326, 282, 1321, 852, 200, 1146, 1253, 49, 1682, 1221, 1840, 1525, 1037, 1170, 1800, 648, 1243, 266, 926, 782, 1667, 984, 570, 1289, 1860, 893, 1630, 479, 339, 246, 866, 1631, 211, 684, 60, 125, 1513, 836, 43, 1450, 515, 1256, 244, 1063, 1693, 913, 966, 54, 432, 1869, 254, 1916, 577, 1096, 540, 1075, 1261, 1871, 1587, 381, 634, 205, 269, 489, 1890, 37, 746, 386, 551, 1414, 953, 1403, 709, 622, 1497, 1561, 1324, 158, 624, 426, 1466, 44, 267, 994, 318, 1398, 397, 95, 786, 81, 1332, 837, 289, 865, 965, 67, 1696, 816, 1044, 820, 229, 1400, 1362, 491, 1139, 1873, 1338, 559, 1016, 1021, 1436, 1002, 1797, 40, 224, 1615, 1385, 941, 1308, 978, 794, 231, 834, 1675, 1736, 31, 1181, 562, 831, 1272, 767, 372, 1825, 1669, 760, 380, 1343, 42, 1351, 1337, 1441, 268, 1644, 1015, 52, 1469, 1861, 1481, 22, 1605, 361, 1381, 410, 1333, 975, 1046, 1595, 348, 1768, 366, 1281, 772, 974, 495, 358, 590, 187, 631, 1695, 687, 1328, 572, 588, 1805, 620, 1577, 1449, 1433, 1659, 320, 418, 346, 602, 573, 1709, 1300, 113, 427, 1891, 1341, 236, 1001, 370, 723, 1092, 1560, 379, 662, 79, 850, 1704, 824, 627, 436, 666, 1103, 653, 945, 1370, 1232, 587, 234, 103, 1858, 934, 1420, 123, 1818, 1310, 499, 1739, 1493, 1847, 1553, 740, 124, 1260, 1378, 1842, 1777, 1816, 1543, 749, 608, 1563, 996, 25, 101, 90, 459, 337, 122, 580, 829, 533, 292, 452, 1614, 1183, 1322, 1278, 521, 1136, 1190, 96, 259, 1645, 1008, 1888, 342, 445, 1504, 162, 382, 1894, 784, 1404, 1531, 1312, 444, 1097, 1447, 1280, 872, 168, 50, 1687, 1593, 1610, 98, 1242, 769, 642, 1309, 888, 433, 302, 1263, 1169, 1656, 1295, 243, 921, 1438, 1161, 877, 640, 1541, 24, 703, 980, 1173, 935, 1519, 440, 1512, 1137, 822, 1014, 310, 511, 583, 1518, 458, 274, 109, 856, 522, 11, 462, 1236, 232, 633, 1567, 1241, 989, 1725, 280, 875, 1083, 1833, 324, 1566, 249, 172, 696, 1505, 1010, 1477, 1327, 910, 861, 88, 99, 357, 437, 80, 1292, 764, 175, 395, 1716, 699, 1483, 1717, 673, 623, 1697, 1479, 1060, 1651, 553, 981, 218, 1110, 185, 77, 900, 371, 904, 1390, 21, 1882, 595, 1718, 1476, 152, 420, 918, 192, 1679, 1484, 1863, 787, 567, 851, 441, 530, 517, 1419, 1388, 329, 301, 1330, 876, 478, 1530, 676, 1844, 403, 74, 647, 728, 230, 519, 256, 737, 235, 1796, 182, 858, 504, 1287, 1124, 1229, 294, 625, 894, 759, 1544, 330, 1711, 505, 903, 1055, 1238, 1397, 1686, 136, 1275, 1580, 1584, 59, 1112, 1636, 166, 655, 1520, 1540, 374, 496, 414, 1226, 154, 860, 531, 1465, 1345, 1662, 1284, 669, 1627, 1408, 36, 191, 1748, 7, 1498, 802, 325, 957, 208, 228, 1201, 950, 1318, 155, 948, 133, 920, 442, 225, 611, 1633, 796, 667, 1652, 1304, 1609, 1611, 527, 1427, 1354, 689, 930, 870, 925, 56, 1402, 100, 189, 1068, 1737, 322, 523, 247, 971, 1445, 55, 579, 1374, 1571, 1521, 890, 785, 58, 671, 1608, 1168, 1742, 899, 299, 778, 1542, 761, 566, 46, 1708, 1719, 351, 1392, 651, 1764, 811, 449, 922, 261, 1036, 694, 127, 1114, 707, 1487, 1852, 1802, 873, 174, 1865, 1710, 763, 164, 1632, 345, 539, 1141, 805, 919, 911, 184, 548, 1422, 1625, 1155, 399, 1795, 1845, 1889, 1565, 45, 603, 1444, 1517, 1823, 1246, 477, 64, 1164, 1411, 781, 8, 1635, 1583, 1200, 241, 151, 177, 333, 629, 1453, 293, 1760, 636, 1239, 1115, 727, 273, 1394, 1266, 1184, 1619, 1743, 313, 1904, 982, 1367, 153, 564, 1806, 331, 1862, 1848, 606, 1264, 57, 97, 1774, 1814, 1086, 1029, 393, 1488, 85, 1509, 1550, 725, 1638, 1846, 1342, 1728, 993, 421, 1781, 681, 473, 1604, 364, 1613, 679, 780, 1885, 581, 1130, 116, 823, 355, 736, 75, 398, 557, 1740, 1515, 1596, 1250, 641, 1683, 198, 1363, 589, 1223, 1209, 417, 209, 1810, 9, 535, 1500, 1881, 1208, 909, 0, 702, 1897, 598, 1189, 748, 675, 1691, 1152, 755, 4, 1416, 830, 439, 1222, 1340, 692, 1003, 34, 356, 170, 1761, 1657, 1578, 401, 795, 1507, 997, 644, 1166, 447, 518, 563, 336, 1820, 343, 597, 844, 1058, 497, 311, 1463, 754, 1218, 1191, 1148, 1612, 1022, 1344, 1776, 942, 906, 1409, 1098, 130, 1418, 1830, 190, 1303, 1749, 607, 825, 92, 677, 628, 326, 715, 949, 27, 1537, 1025, 1439, 1277, 396, 1270, 53, 558, 584, 616, 630, 1533, 532, 1113, 612, 1080, 173, 1090, 838, 17, 897, 1306, 1311, 1131, 388, 1118, 1528, 1426, 1257, 1460, 1714, 1407, 144, 1734, 258, 1731, 526, 367, 1834, 126, 1104, 638, 791, 265, 223, 461, 1457, 139, 456, 1905, 1663, 1412, 1568, 1763, 883, 1661, 1678, 493, 1606, 1813, 541, 1757, 276, 296, 1673, 222, 1707, 183, 257, 615, 1478, 742, 376, 810, 661, 365, 156, 1298, 1701, 1653, 202, 1334, 1197, 1482, 106, 323, 1448, 1558, 1179, 1854, 902, 1049, 297, 216, 1268, 277, 1336, 1393, 65, 1456, 1052, 5, 1735, 1495, 1175, 988, 117, 721, 1788, 315, 1819, 1305, 1794, 520, 543, 1214, 917, 731, 1091, 1147, 1070, 68, 892, 1486, 464, 783, 115, 1883, 1372, 752, 383, 1122, 582, 1039, 1213, 574, 1594, 1870, 1111, 1792, 706, 1674, 233, 1607, 691, 1417, 1071, 711, 1538, 252, 741, 1396, 1211, 1429, 1906, 513, 799, 1384, 1138, 1688, 1681, 1045, 961, 743, 1824, 619, 766, 1727, 147, 827, 1117, 1547, 1892, 39, 82, 1546, 963, 178, 658, 1592, 425, 484, 415, 1204, 1331, 1207, 561, 912, 451, 1548, 1494, 1210, 1676, 685, 1291, 793, 632, 1018], [1054, 207, 1715, 1233, 514, 238, 1377, 1677, 878, 1624, 1145, 1009, 469, 962, 1194, 93, 1556, 1851, 1569, 1089, 745, 423, 23, 821, 29, 1401, 789, 1791, 788, 1079, 1347, 503, 1199, 753, 848, 1294, 801, 682, 955, 112, 1188, 402, 1878, 1817, 1288, 1821, 1245, 1302, 1007, 1705, 271, 510, 1510, 327, 1127, 486, 1555, 1004, 1589, 1511, 1700, 1373, 1668, 341, 1489, 1790, 1492, 321, 659, 578, 303, 118, 960, 453, 160, 683, 1832, 434, 701, 928, 480, 1446, 1552, 704, 94, 1317, 1410, 394, 186, 771, 859, 1395, 1646, 1570, 1353, 714, 1297, 360, 1153, 1185, 1766, 1471, 1013, 1356, 1437, 78, 63, 1618, 537, 482, 3, 450, 1339, 490, 857, 251, 898, 916, 546, 1809, 1689, 1078, 1069, 1, 1035, 1534, 1158, 203, 1837, 1095, 1235, 295, 933, 1474, 1559, 240, 105, 419, 1751, 1061, 1896, 1162, 1508, 1195, 237, 509, 1875, 6, 1564, 1698, 1907, 20, 1023, 1157, 1724, 132, 1912, 108, 1839, 734, 413, 316, 1249, 1880, 430, 915, 952, 813, 1532, 1116, 1859, 137, 1703, 141, 1785, 1582, 643, 119, 12, 968, 1193, 408, 214, 601, 967, 803, 1551, 363, 424, 958, 1826, 196]]Using cache found in /home/cc/.cache/torch/hub/facebookresearch_dinov2_b48308a394a04ccb9c4dd3a1f0a4daa1ce0579b8
+
+Resuming from epoch 65: /home/cc/ckpt/outputs/wall_single/checkpoints/model_latest.pth
+[2026-11-12 20:56:58,549][dinov2][INFO] - using MLP layer as FFN
+num_action_repeat: 1
+num_proprio_repeat: 1
+proprio encoder: ProprioceptiveEmbedding(
+  (patch_embed): Conv1d(2, 10, kernel_size=(1,), stride=(1,))
+)
+action encoder: ProprioceptiveEmbedding(
+  (patch_embed): Conv1d(10, 10, kernel_size=(1,), stride=(1,))
+)
+proprio_dim: 10, after repeat: 10
+action_dim: 10, after repeat: 10
+emb_dim: 404
+Model emb_dim:  404
+eval_seed:  [1, 100, 199, 298, 397, 496, 595, 694, 793, 892, 991, 1090, 1189, 1288, 1387, 1486, 1585, 1684, 1783, 1882, 1981, 2080, 2179, 2278, 2377, 2476, 2575, 2674, 2773, 2872, 2971, 3070, 3169, 3268, 3367, 3466, 3565, 3664, 3763, 3862, 3961, 4060, 4159, 4258, 4357, 4456, 4555, 4654, 4753, 4852]
+Dumped plan targets to /home/cc/dino_wm_smooth_planning/plan_outputs/20261112205653_sgd_adam_lr0.1_randn_K8_S125_sig1_geom_s99/plan_targets.pkl
+Success rate:  0.0
+{'success': array([False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([41.67800204, 19.19337801, 35.79598706, 35.35544967, 26.82054778,
+       42.2757951 , 27.6657567 , 44.04149769,  4.69198926, 47.13157706,
+       35.95733778, 34.0083357 , 46.95861764, 29.81243737, 39.88945682,
+       27.64157808, 44.95148726, 14.3414529 , 33.89318425, 44.89954046,
+       26.1404122 , 39.18949295, 37.63569948, 25.71214623, 14.41289482,
+       51.07645909, 28.55128166, 47.85572052, 36.04077546, 24.33596891,
+       29.42279855, 27.81245052, 19.34799122, 23.28183948, 22.60386935,
+       36.62728284, 21.60985199, 28.69385977, 52.41440164, 39.07336575,
+       51.4188643 , 28.58669786, 34.54033548, 37.04901307, 27.9258472 ,
+       28.266017  , 42.37704072, 51.24134534, 22.73451474, 27.20437479])}
+Success rate:  0.1
+{'success': array([False, False, False,  True, False, False, False, False, False,
+       False, False, False, False,  True, False, False, False, False,
+       False, False, False, False,  True, False, False, False, False,
+       False, False, False, False, False, False, False,  True,  True,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([20.05851352, 21.92424817, 16.96135125,  2.64100559, 15.51485156,
+       19.09746883, 19.94980202,  7.34829217, 12.34739299, 31.98717972,
+       10.66830402,  6.30507099, 22.21901301,  2.50543251, 15.2959802 ,
+       16.87680637, 22.77352716, 13.79873879,  7.15162784, 18.11601995,
+       17.64165292, 16.58044817,  1.84484502, 18.12136192, 12.51728005,
+       19.7461284 , 11.34777254, 29.43749705, 18.70170135, 21.61478794,
+       17.69700519, 14.39230438,  8.70828597,  7.99605679,  2.75057648,
+        3.78995746,  7.77261656,  8.2628764 , 12.75122087, 20.4452674 ,
+       23.05311424, 15.76849733, 13.76992776,  8.34713595, 15.66062407,
+        5.1379453 , 27.60106345, 23.62468216, 15.59406299, 20.83490263])}
+Success rate:  0.08
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False,  True, False, False, False,
+        True, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False,  True, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([20.58599395, 21.64675296, 19.97560486, 15.66658842, 10.692767  ,
+       19.40830603, 19.23707749, 22.26933204,  4.42989245, 12.22930365,
+       14.57103548,  7.23516993,  5.48089996,  7.84787234,  4.08402602,
+       18.14436834,  8.99543722,  6.88884109,  1.87938829, 15.56873265,
+       17.17063827, 16.43014557, 11.75325548, 18.46204942, 12.66805501,
+        5.71092642, 25.12927445,  5.39743756, 17.24325093, 22.67151435,
+       17.71675763, 12.40327252, 12.04037136, 13.20307058,  3.59024843,
+       13.61830114,  4.73430597,  7.38671004, 10.91788619, 26.93814796,
+       11.98303978, 10.82134103, 13.57108345, 30.47122887,  4.99818872,
+       18.70126041, 27.60106345, 25.36537922,  7.40286281, 27.27551503])}
+Success rate:  0.22
+{'success': array([False, False, False, False,  True, False, False,  True,  True,
+       False, False, False, False, False, False, False, False,  True,
+        True, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False,  True,  True,  True,
+        True, False, False, False, False, False, False,  True, False,
+       False, False, False,  True, False]), 'state_dist': array([20.59177671, 21.38333625, 19.92563867, 16.25161425,  1.86320187,
+       20.25843122, 18.52945079,  4.21953019,  1.60912353,  4.99079802,
+       24.1183093 ,  6.9528777 ,  4.84472787,  7.72019481, 12.67861354,
+       18.14436834,  7.06644515,  2.48250445,  2.62476106, 17.17987339,
+       14.75290698, 16.67653901,  8.37352783, 14.15402168, 12.5552484 ,
+        7.70794525, 24.59751856,  6.87463215, 18.21111236, 23.35444405,
+       17.69959839, 12.40566772,  8.55324813,  1.24896728,  4.00038739,
+        1.94624031,  1.18053726,  6.90024573,  6.80794486, 21.65249517,
+        6.24464536,  7.60552377, 13.78823479,  4.0614429 ,  5.03280847,
+       17.62817705, 27.60106345, 26.51417956,  2.25761036, 26.41459231])}
+Success rate:  0.2
+{'success': array([ True, False, False, False, False, False, False, False,  True,
+        True, False, False, False, False, False, False, False, False,
+        True, False, False, False, False, False, False, False, False,
+       False, False, False, False, False,  True, False,  True, False,
+        True, False,  True, False, False,  True, False,  True, False,
+       False, False, False, False, False]), 'state_dist': array([ 4.39709597, 21.43729726, 19.43774474, 16.35174363, 12.60765294,
+       21.72369459, 18.88524516,  6.06430772,  3.21577936,  3.86560946,
+       18.98320228,  5.76337664,  5.1884416 ,  7.70476134,  4.8893352 ,
+       18.27345876,  6.33484332, 12.97958923,  1.66318014, 15.56935199,
+       12.35677889, 16.67653901,  9.31770616, 14.24226916, 12.5552484 ,
+        6.43166178,  9.42867643,  6.52096254, 17.870124  , 22.4191884 ,
+       17.79370219, 12.51521079,  1.85338955,  4.97787074,  1.76796782,
+        9.64182746,  3.70846569,  4.97007386,  4.23958814, 10.40807217,
+        7.12315909,  4.15833192, 13.76760025,  3.80334977, 15.9144425 ,
+       16.618241  , 27.60106345, 26.52960466, 26.39981184, 20.99600688])}
+Success rate:  0.26
+{'success': array([False, False, False, False, False, False, False, False,  True,
+        True, False, False,  True, False,  True, False, False,  True,
+        True, False, False, False,  True, False, False, False, False,
+       False, False, False, False, False,  True,  True, False,  True,
+       False,  True, False, False, False,  True, False,  True, False,
+       False, False, False, False, False]), 'state_dist': array([31.70348654, 21.37616608, 19.38351256, 15.93747   ,  9.1771179 ,
+       22.95739892, 21.29846646,  6.57599823,  1.43882072,  2.28529746,
+       17.92035212,  6.36662973,  2.75677348,  8.50545935,  0.57262831,
+       18.23033512,  6.12652648,  1.20770309,  2.83680256, 15.85930373,
+       11.24460887, 16.67653901,  1.76728059, 14.6437915 , 12.5552484 ,
+        5.99946753,  9.95400843,  7.20410512, 17.62924224, 23.09754754,
+       17.79363291, 12.48323515,  2.69799449,  0.38486703,  5.98266227,
+        2.82558575,  7.03263296,  3.44766798,  4.61527478, 11.18261904,
+        6.32541553,  3.84395653, 13.54647273,  4.23236691, 15.66062407,
+       10.86501144, 27.84217217, 26.68475403, 26.84223604, 16.85366192])}
+Success rate:  0.2
+{'success': array([False, False, False, False,  True, False, False, False,  True,
+        True, False, False,  True, False,  True, False, False,  True,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True, False, False,
+       False,  True, False, False, False,  True, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([29.66066989, 21.49385793, 18.24572687, 15.77864158,  1.53036536,
+       23.52047955,  9.77163805,  4.56605463,  1.03416287,  3.03955083,
+       17.01897442,  8.25238327,  2.26960132,  7.98136061,  0.55482567,
+       18.20309015,  6.363333  ,  1.78481835,  4.82763391, 17.07188561,
+        9.45430363, 16.67653901,  9.76262091, 12.55900791, 12.5552484 ,
+        7.34205644,  9.37271605,  7.05589168, 18.13297049, 24.58802507,
+       17.77513402, 12.48985304,  2.72888469,  1.12917438,  6.0931352 ,
+        4.74731818,  5.99147231,  4.0320916 , 27.49501974, 28.52981385,
+        6.37246186,  3.81997889, 13.53930032,  4.51171305, 15.9144425 ,
+        8.37272488, 27.84217217, 26.75590741, 26.89849409, 16.60039786])}
+Success rate:  0.28
+{'success': array([ True, False, False, False,  True, False, False, False,  True,
+        True, False, False, False, False,  True, False, False,  True,
+        True, False, False, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True,  True,  True,
+       False, False, False, False, False,  True, False, False, False,
+        True, False, False,  True, False]), 'state_dist': array([ 1.19448301, 22.01947339, 15.16998574, 10.89403972,  1.1148876 ,
+       22.10528965, 22.60556357,  7.10077701,  3.82373765,  3.65601653,
+        5.1121138 ,  8.924115  , 23.19395003,  7.65704852,  1.54494113,
+       18.19743996,  6.09934247,  0.81472777,  3.68559163, 16.23233582,
+        7.58043196, 16.67653901,  7.25552911, 12.56553669, 12.5552484 ,
+        4.81405379,  9.4164812 ,  6.52016368, 18.01916111, 26.74296522,
+       17.62891941, 12.42095729,  0.90194983,  0.86291046,  1.34952488,
+        2.05430968,  5.90129625,  6.67285983, 27.55033391, 11.99824628,
+        7.99951826,  3.96578468, 13.51823353,  4.53782486, 15.9144425 ,
+        1.55509697, 27.60106345, 26.8606194 ,  1.95136159, 16.60156566])}
+Success rate:  0.32
+{'success': array([ True, False, False, False,  True, False,  True, False,  True,
+       False,  True, False, False, False,  True, False, False,  True,
+        True, False, False, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True,  True,  True,
+       False, False, False, False, False,  True, False,  True, False,
+        True, False, False,  True, False]), 'state_dist': array([ 3.39333142, 21.73886295, 14.39090776, 16.15812084,  0.98214507,
+       21.85098829,  3.57613523,  8.73656082,  3.67817726,  4.50115171,
+        2.89964972,  8.8387186 , 21.78854312,  7.405161  ,  1.5930781 ,
+       18.18688496,  6.4604064 ,  1.37610858,  2.15780354, 15.6351572 ,
+       10.28466893, 16.67653901,  9.51542459, 18.63922259, 12.5552484 ,
+        4.68773462,  9.42118034,  6.16692505, 18.79629925, 28.52984609,
+       19.66486232, 12.50555119,  1.16182297,  2.72046167,  1.06923597,
+        2.76604312,  5.54275158,  9.07391487, 27.52134137, 11.0840736 ,
+        7.46007631,  3.87443343, 13.50821776,  4.1378745 , 15.9144425 ,
+        3.13253894, 27.60106345, 27.40456726,  2.13849799, 16.46097659])}
+Success rate:  0.32
+{'success': array([ True, False, False, False,  True, False,  True,  True,  True,
+        True,  True, False, False, False,  True, False, False,  True,
+        True, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False,  True,  True,  True,
+       False, False, False, False, False,  True, False, False, False,
+        True, False, False,  True, False]), 'state_dist': array([3.05826431e+00, 2.16821132e+01, 1.60760139e+01, 1.57609908e+01,
+       3.52314089e-01, 2.12549264e+01, 4.45043509e+00, 1.08995116e+00,
+       3.28875094e+00, 2.39512525e+00, 4.52809387e-01, 9.39251469e+00,
+       2.14597277e+01, 8.35052926e+00, 1.61094854e+00, 1.81770134e+01,
+       5.61283537e+00, 2.35151460e+00, 1.24455922e+00, 1.56494140e+01,
+       1.20667808e+01, 1.66765390e+01, 1.04404968e+01, 1.85573015e+01,
+       1.38461455e+01, 4.70016589e+00, 9.77070702e+00, 6.03491365e+00,
+       1.79399910e+01, 2.76296428e+01, 1.89392634e+01, 1.24256213e+01,
+       5.75617408e+00, 2.06072177e-02, 3.14171919e-01, 2.11354018e+00,
+       4.75430151e+00, 8.32893047e+00, 2.75008550e+01, 1.04241576e+01,
+       7.70357020e+00, 3.77818063e+00, 1.34901459e+01, 5.17679249e+00,
+       1.59144425e+01, 3.83131101e+00, 2.74505991e+01, 1.34263399e+01,
+       1.87041330e+00, 2.35046824e+01])}
+Success rate:  0.34
+{'success': array([ True, False, False, False,  True, False,  True,  True,  True,
+        True,  True, False, False, False,  True, False,  True,  True,
+        True, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False,  True,  True,  True,
+       False, False, False, False, False,  True, False, False, False,
+        True, False, False,  True, False]), 'state_dist': array([ 3.00285176, 21.69990701, 16.84098232, 13.54773747,  1.16873204,
+       21.89007636,  4.46236732,  4.48381694,  3.59416597,  2.6909762 ,
+        1.13136597,  9.28681297, 21.42559614,  9.20673807,  1.35943349,
+       18.10253214,  4.38064652,  3.25309489,  0.44626319, 15.58035836,
+       10.72404068, 16.67653901, 10.05692271, 18.52840872, 14.27774409,
+        4.69217787,  9.48527138,  5.39925821, 18.05822632, 27.48178899,
+       17.32740767, 12.54512015, 17.56588511,  0.40275256,  1.53061825,
+        2.58062455,  4.8187239 ,  9.69181324, 27.59440504,  9.33306177,
+        7.78248937,  4.21276551, 13.4948538 ,  4.80478471, 16.0261294 ,
+        1.15896869, 27.60345892, 13.19995143,  1.97741404, 24.12838368])}
+Success rate:  0.34
+{'success': array([ True, False, False, False,  True, False,  True, False, False,
+        True,  True, False, False, False,  True, False,  True,  True,
+        True, False, False, False, False, False, False, False, False,
+        True, False, False, False, False, False,  True,  True,  True,
+       False, False, False,  True, False, False, False, False,  True,
+        True, False, False,  True, False]), 'state_dist': array([ 2.61356221, 21.55073283, 14.967661  , 13.43048036,  0.03722017,
+       21.89800602,  4.29388087,  5.94608778, 18.40056543,  3.39114239,
+        1.34248441,  9.61892008, 21.43039574,  5.76343368,  1.38503882,
+       18.20921918,  2.30463576,  3.44126863,  0.69187016, 15.7820643 ,
+       10.29426847, 16.67653901,  9.92467906, 18.51627057, 14.56344291,
+        4.69217391,  9.42399509,  3.45195789, 18.15552952, 26.76568505,
+       17.31891775, 12.48890888, 18.11491677,  0.69247587,  1.55867845,
+        0.95759618,  4.64550334, 10.34738216, 27.68513566,  2.3814042 ,
+        8.51455254,  4.66069929, 13.49132127,  6.01867845,  3.58215844,
+        0.8780005 , 27.2488951 , 12.90735139,  2.00482748, 16.52870343])}
+Success rate:  0.4
+{'success': array([ True, False, False, False,  True, False,  True, False,  True,
+        True,  True, False, False, False,  True, False,  True,  True,
+        True, False, False, False, False, False, False, False, False,
+        True, False, False, False, False,  True,  True,  True,  True,
+       False, False,  True,  True, False, False, False, False,  True,
+        True, False, False,  True, False]), 'state_dist': array([ 3.48459986, 21.55374581, 14.7918691 , 13.54996398,  0.20815387,
+       21.43202203,  3.8729056 ,  6.023663  ,  3.35734086,  4.04793   ,
+        2.17724061,  9.28588208, 21.43567895,  4.54932885,  1.52847608,
+       18.19438781,  2.52825286,  2.9370966 ,  0.26937387, 16.16847278,
+        9.58764026, 16.67653901, 10.12598133, 18.50575495, 14.71604683,
+        4.70104882,  9.06359437,  3.41790346, 18.81519448, 26.91536937,
+       17.72558854, 12.51063238,  0.55011873,  0.63950181,  1.58626922,
+        0.67571697,  4.52976181,  9.17928846,  4.3192236 ,  1.03351683,
+        8.6454694 ,  4.64537713, 13.49505627,  6.0334533 ,  3.83877133,
+        0.77990822, 27.98378609, 10.91228364,  1.81806281, 26.2275705 ])}
+Success rate:  0.38
+{'success': array([ True, False, False, False,  True, False,  True, False,  True,
+       False,  True, False, False, False,  True, False,  True,  True,
+        True, False, False, False, False, False, False, False, False,
+        True, False, False, False, False,  True,  True,  True,  True,
+       False, False,  True,  True, False, False, False, False,  True,
+        True, False, False,  True, False]), 'state_dist': array([ 3.40891322, 21.55296812, 14.66254611, 13.48374024,  0.19728895,
+       21.38262887,  3.71576262,  4.71619606,  3.16877169,  5.1146972 ,
+        1.53691443,  9.36396201, 21.43055884,  4.65993615,  1.48314233,
+       18.17089671,  2.65781895,  2.73412891,  1.49620198, 16.20620736,
+        9.45480928, 16.67653901,  8.8103398 , 18.50289792, 14.78150739,
+        4.70416577,  8.80897225,  3.54153078, 19.13645016, 26.8952694 ,
+       17.72291705, 12.56798459,  0.76961592,  0.58890953,  1.6955152 ,
+        1.10570096,  4.50982277,  9.32100189,  3.93680313,  0.65318212,
+        8.61266329,  4.88486839, 13.51690227,  6.13183246,  3.04887093,
+        0.38481783, 29.33705778, 10.92435248,  1.80833702, 24.51067908])}
+run_stats: {'wall_clock_s': 1613.4120976924896, 'plan_fwd': 50000, 'plan_fwd_grad': 50000, 'plan_equiv': 150000, 'enc_images': 50050, 'pred_fwd': 250000, 'pred_fwd_grad': 250000, 'pred_equiv': 750000, 'eval_s': 72.54791474342346, 'eval_calls': 14, 'plan_s': 1540.8641829490662, 'oracle_stop': False, 'peak_gpu_mb': 6005.98583984375, 'gpu': 'Quadro RTX 6000', 'git_commit': '3b27b979c2ce292ce9cbcb2045c679ef41e1895f', 'git_dirty': False, 'num_hist': 1, 'wm_eval_mode': False, 'predictor_training_as_loaded': False, 'predictor_dropout_active': False, 'frameskip': 5, 'final_success_rate': 0.38}
+warning: probe.npz missing in plan_outputs/20261112205653_sgd_adam_lr0.1_randn_K8_S125_sig1_geom_s99
+  - model_name=wall_single
+  - planner=smooth_gd
+  - goal_source=random_state
+  - goal_H=5
+  - n_evals=50
+  - seed=99
+  - ckpt_base_path=/home/cc/ckpt
+  - +planner.oracle_stop=false
+  - +planner.episode_chunk=25
+  - planner.optimizer=adam
+  - planner.lr=0.1
+  - planner.sample_type=randn
+  - planner.sigma0=1
+  - planner.sigma_schedule=geom
+  - planner.sigma_min=0.1
+  - planner.K=8
+  - planner.opt_steps=125
+saved plan_outputs/20261112205653_sgd_adam_lr0.1_randn_K8_S125_sig1_geom_s99 -> results/wall/sgd_adam_lr0.1_randn_K8_S125_sig1_geom_s99
+skip sgd_adam_lr0.1_randn_K8_S125_sig3_const (another worker has it)
+>>> 21:23 sgd_adam_lr0.1_randn_K8_S125_sig3_geom: planner.optimizer=adam planner.lr=0.1 planner.sample_type=randn planner.sigma0=3 planner.sigma_schedule=geom planner.sigma_min=0.3 planner.K=8 planner.opt_steps=125
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/wandb/sdk/internal/internal_api.py:30: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import parse_version
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/pkg_resources/__init__.py:2825: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/pkg_resources/__init__.py:2825: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/Cython/Distutils/old_build_ext.py:15: DeprecationWarning: dep_util is Deprecated. Use functions from setuptools instead.
+  from distutils.dep_util import newer, newer_group
+Warning: Mujoco-based envs failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'mjrl'
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/glfw/__init__.py:914: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+pybullet build time: Jan 29 2025 23:20:52
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-open-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-umaze-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-medium-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-large-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-open-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-dense-v0[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-umaze-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-medium-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-large-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-umaze-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-medium-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/miniforge3/envs/dino_wm/lib/python3.9/site-packages/gym/envs/registration.py:595: UserWarning: [33mWARN: Overriding environment maze2d-eval-large-dense-v1[0m
+  logger.warn(f"Overriding environment {id}")
+/home/cc/dino_wm_smooth_planning/custom_resolvers.py:4: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path=None)
+[2026-11-12 21:24:03,812][__main__][INFO] - Planning result saved dir: /home/cc/dino_wm_smooth_planning/plan_outputs/20261112212359_sgd_adam_lr0.1_randn_K8_S125_sig3_geom_s99
+Loading wall dataset...
+Loaded 1920 rollouts
+[[102, 33, 1056, 1591, 354, 245, 790, 1323, 142, 1745, 1588, 1473, 38, 1192, 735, 832, 547, 1186, 843, 660, 869, 83, 695, 1629, 179, 1658, 157, 1758, 1747, 250, 312, 1361, 1163, 1798, 275, 1099, 1787, 964, 1066, 609, 1666, 774, 181, 1502, 407, 668, 593, 1623, 1101, 565, 1350, 1572, 1094, 512, 148, 809, 263, 1853, 908, 927, 626, 569, 1730, 757, 1574, 1866, 1107, 1706, 391, 1255, 947, 828, 1720, 1057, 19, 1364, 1575, 1914, 1562, 1909, 534, 973, 538, 1017, 646, 285, 309, 1884, 1059, 552, 697, 1702, 145, 819, 649, 665, 169, 1051, 171, 1529, 1470, 291, 1371, 1240, 1641, 1746, 1443, 1307, 1801, 369, 1365, 525, 167, 1121, 1430, 874, 528, 1459, 1617, 770, 359, 923, 507, 884, 1616, 1314, 1149, 1379, 891, 1442, 1047, 1887, 248, 1767, 1620, 283, 392, 1290, 1650, 242, 1399, 807, 159, 204, 775, 1827, 500, 1352, 700, 1265, 1102, 149, 1440, 1258, 1738, 347, 690, 468, 1726, 1234, 1126, 868, 1501, 621, 585, 1523, 121, 1108, 846, 1167, 1405, 114, 474, 1406, 195, 1144, 586, 384, 1680, 298, 308, 529, 901, 475, 992, 1811, 1655, 914, 1598, 560, 1452, 385, 1032, 1895, 756, 1893, 485, 1293, 1876, 378, 206, 61, 1762, 1335, 1779, 1062, 111, 550, 1357, 284, 1074, 880, 592, 712, 1454, 1660, 1067, 946, 1011, 193, 1838, 1072, 1065, 1267, 1217, 591, 678, 792, 180, 1313, 69, 84, 1603, 1775, 201, 1415, 457, 1359, 400, 1759, 1081, 554, 471, 1841, 446, 1670, 688, 140, 1600, 871, 1093, 460, 1831, 818, 940, 1128, 614, 1000, 987, 1048, 72, 465, 804, 1804, 826, 1006, 1129, 270, 954, 86, 107, 1744, 751, 1143, 1554, 1750, 556, 1692, 664, 943, 907, 1713, 881, 1793, 849, 972, 264, 1431, 1040, 1391, 680, 1864, 724, 1549, 455, 600, 389, 1301, 1262, 1073, 1216, 613, 314, 15, 657, 896, 549, 575, 719, 545, 937, 1585, 165, 1252, 338, 970, 1366, 1247, 1024, 14, 855, 212, 887, 977, 1225, 776, 10, 1903, 1423, 596, 726, 431, 959, 1159, 1033, 1458, 1196, 1526, 317, 1358, 454, 1647, 976, 773, 1786, 1462, 488, 41, 571, 1464, 599, 979, 864, 18, 306, 1299, 797, 332, 1424, 1286, 66, 51, 1230, 1527, 1042, 762, 219, 487, 1026, 1282, 1285, 1503, 1597, 1573, 758, 999, 30, 1215, 1315, 1227, 387, 1867, 1421, 220, 932, 1829, 26, 1822, 290, 1088, 1902, 429, 463, 197, 1156, 1539, 1491, 1027, 1901, 733, 1879, 833, 278, 1251, 1899, 1642, 73, 272, 1019, 1084, 1346, 1803, 845, 568, 286, 76, 956, 1237, 48, 939, 1601, 481, 1187, 176, 1231, 1545, 1664, 1244, 87, 47, 194, 1586, 1316, 1125, 1649, 1077, 995, 1665, 1428, 1219, 1712, 1038, 542, 998, 70, 929, 1648, 476, 886, 1134, 1733, 854, 853, 1283, 1432, 1723, 1269, 281, 1174, 110, 1685, 1868, 777, 1522, 353, 798, 1773, 409, 768, 1273, 1490, 221, 1154, 1499, 71, 1637, 720, 1850, 1198, 1755, 1915, 716, 1900, 1835, 672, 319, 1536, 226, 1472, 1602, 969, 492, 428, 895, 814, 1133, 62, 656, 1722, 1621, 1142, 1087, 524, 1590, 1030, 650, 1451, 1913, 1259, 1917, 544, 377, 862, 1202, 1177, 1274, 1123, 617, 605, 1106, 1855, 422, 1769, 362, 1721, 1329, 1206, 1506, 135, 1320, 217, 120, 1120, 1836, 710, 717, 1799, 1557, 722, 1694, 405, 375, 1034, 260, 1496, 411, 1672, 28, 637, 373, 1808, 134, 1012, 536, 1752, 983, 1135, 1576, 483, 13, 404, 841, 1172, 1041, 1843, 161, 847, 1369, 1910, 1782, 1671, 1376, 1856, 498, 806, 635, 1212, 438, 835, 1849, 1109, 1349, 1043, 2, 466, 610, 1165, 885, 951, 344, 300, 1807, 1908, 287, 1877, 705, 1872, 1581, 985, 328, 708, 730, 350, 307, 146, 840, 1180, 494, 16, 555, 1368, 1780, 779, 1771, 1203, 1754, 744, 863, 1684, 639, 1919, 738, 938, 1053, 618, 91, 1886, 1028, 472, 1050, 138, 131, 89, 416, 991, 1254, 467, 227, 1765, 1634, 1789, 1622, 1205, 1874, 839, 1151, 654, 1182, 815, 470, 670, 150, 718, 352, 1579, 879, 443, 1690, 32, 435, 1383, 501, 882, 1085, 1176, 1382, 1171, 686, 1140, 1105, 800, 1516, 1485, 516, 1475, 1434, 1911, 889, 239, 652, 1535, 1639, 335, 1325, 1784, 765, 663, 1224, 448, 1815, 739, 1812, 1076, 747, 1467, 732, 1654, 1828, 502, 1319, 1425, 1160, 1468, 368, 1732, 1248, 143, 808, 674, 713, 129, 1599, 288, 1005, 1643, 1729, 1918, 1064, 279, 1741, 406, 867, 729, 604, 1220, 750, 304, 936, 215, 1626, 1778, 1031, 1756, 305, 1699, 412, 1387, 1640, 210, 188, 253, 645, 1279, 349, 1898, 262, 1082, 213, 255, 1514, 1375, 576, 698, 986, 1119, 508, 1753, 104, 1296, 1380, 128, 163, 693, 1524, 924, 842, 812, 1348, 199, 1386, 1628, 1435, 1772, 817, 931, 334, 1360, 390, 1413, 1783, 944, 905, 1271, 1132, 1857, 35, 340, 1461, 506, 1150, 1455, 594, 1020, 1178, 1770, 1389, 1276, 1355, 1228, 990, 1480, 1100, 1326, 282, 1321, 852, 200, 1146, 1253, 49, 1682, 1221, 1840, 1525, 1037, 1170, 1800, 648, 1243, 266, 926, 782, 1667, 984, 570, 1289, 1860, 893, 1630, 479, 339, 246, 866, 1631, 211, 684, 60, 125, 1513, 836, 43, 1450, 515, 1256, 244, 1063, 1693, 913, 966, 54, 432, 1869, 254, 1916, 577, 1096, 540, 1075, 1261, 1871, 1587, 381, 634, 205, 269, 489, 1890, 37, 746, 386, 551, 1414, 953, 1403, 709, 622, 1497, 1561, 1324, 158, 624, 426, 1466, 44, 267, 994, 318, 1398, 397, 95, 786, 81, 1332, 837, 289, 865, 965, 67, 1696, 816, 1044, 820, 229, 1400, 1362, 491, 1139, 1873, 1338, 559, 1016, 1021, 1436, 1002, 1797, 40, 224, 1615, 1385, 941, 1308, 978, 794, 231, 834, 1675, 1736, 31, 1181, 562, 831, 1272, 767, 372, 1825, 1669, 760, 380, 1343, 42, 1351, 1337, 1441, 268, 1644, 1015, 52, 1469, 1861, 1481, 22, 1605, 361, 1381, 410, 1333, 975, 1046, 1595, 348, 1768, 366, 1281, 772, 974, 495, 358, 590, 187, 631, 1695, 687, 1328, 572, 588, 1805, 620, 1577, 1449, 1433, 1659, 320, 418, 346, 602, 573, 1709, 1300, 113, 427, 1891, 1341, 236, 1001, 370, 723, 1092, 1560, 379, 662, 79, 850, 1704, 824, 627, 436, 666, 1103, 653, 945, 1370, 1232, 587, 234, 103, 1858, 934, 1420, 123, 1818, 1310, 499, 1739, 1493, 1847, 1553, 740, 124, 1260, 1378, 1842, 1777, 1816, 1543, 749, 608, 1563, 996, 25, 101, 90, 459, 337, 122, 580, 829, 533, 292, 452, 1614, 1183, 1322, 1278, 521, 1136, 1190, 96, 259, 1645, 1008, 1888, 342, 445, 1504, 162, 382, 1894, 784, 1404, 1531, 1312, 444, 1097, 1447, 1280, 872, 168, 50, 1687, 1593, 1610, 98, 1242, 769, 642, 1309, 888, 433, 302, 1263, 1169, 1656, 1295, 243, 921, 1438, 1161, 877, 640, 1541, 24, 703, 980, 1173, 935, 1519, 440, 1512, 1137, 822, 1014, 310, 511, 583, 1518, 458, 274, 109, 856, 522, 11, 462, 1236, 232, 633, 1567, 1241, 989, 1725, 280, 875, 1083, 1833, 324, 1566, 249, 172, 696, 1505, 1010, 1477, 1327, 910, 861, 88, 99, 357, 437, 80, 1292, 764, 175, 395, 1716, 699, 1483, 1717, 673, 623, 1697, 1479, 1060, 1651, 553, 981, 218, 1110, 185, 77, 900, 371, 904, 1390, 21, 1882, 595, 1718, 1476, 152, 420, 918, 192, 1679, 1484, 1863, 787, 567, 851, 441, 530, 517, 1419, 1388, 329, 301, 1330, 876, 478, 1530, 676, 1844, 403, 74, 647, 728, 230, 519, 256, 737, 235, 1796, 182, 858, 504, 1287, 1124, 1229, 294, 625, 894, 759, 1544, 330, 1711, 505, 903, 1055, 1238, 1397, 1686, 136, 1275, 1580, 1584, 59, 1112, 1636, 166, 655, 1520, 1540, 374, 496, 414, 1226, 154, 860, 531, 1465, 1345, 1662, 1284, 669, 1627, 1408, 36, 191, 1748, 7, 1498, 802, 325, 957, 208, 228, 1201, 950, 1318, 155, 948, 133, 920, 442, 225, 611, 1633, 796, 667, 1652, 1304, 1609, 1611, 527, 1427, 1354, 689, 930, 870, 925, 56, 1402, 100, 189, 1068, 1737, 322, 523, 247, 971, 1445, 55, 579, 1374, 1571, 1521, 890, 785, 58, 671, 1608, 1168, 1742, 899, 299, 778, 1542, 761, 566, 46, 1708, 1719, 351, 1392, 651, 1764, 811, 449, 922, 261, 1036, 694, 127, 1114, 707, 1487, 1852, 1802, 873, 174, 1865, 1710, 763, 164, 1632, 345, 539, 1141, 805, 919, 911, 184, 548, 1422, 1625, 1155, 399, 1795, 1845, 1889, 1565, 45, 603, 1444, 1517, 1823, 1246, 477, 64, 1164, 1411, 781, 8, 1635, 1583, 1200, 241, 151, 177, 333, 629, 1453, 293, 1760, 636, 1239, 1115, 727, 273, 1394, 1266, 1184, 1619, 1743, 313, 1904, 982, 1367, 153, 564, 1806, 331, 1862, 1848, 606, 1264, 57, 97, 1774, 1814, 1086, 1029, 393, 1488, 85, 1509, 1550, 725, 1638, 1846, 1342, 1728, 993, 421, 1781, 681, 473, 1604, 364, 1613, 679, 780, 1885, 581, 1130, 116, 823, 355, 736, 75, 398, 557, 1740, 1515, 1596, 1250, 641, 1683, 198, 1363, 589, 1223, 1209, 417, 209, 1810, 9, 535, 1500, 1881, 1208, 909, 0, 702, 1897, 598, 1189, 748, 675, 1691, 1152, 755, 4, 1416, 830, 439, 1222, 1340, 692, 1003, 34, 356, 170, 1761, 1657, 1578, 401, 795, 1507, 997, 644, 1166, 447, 518, 563, 336, 1820, 343, 597, 844, 1058, 497, 311, 1463, 754, 1218, 1191, 1148, 1612, 1022, 1344, 1776, 942, 906, 1409, 1098, 130, 1418, 1830, 190, 1303, 1749, 607, 825, 92, 677, 628, 326, 715, 949, 27, 1537, 1025, 1439, 1277, 396, 1270, 53, 558, 584, 616, 630, 1533, 532, 1113, 612, 1080, 173, 1090, 838, 17, 897, 1306, 1311, 1131, 388, 1118, 1528, 1426, 1257, 1460, 1714, 1407, 144, 1734, 258, 1731, 526, 367, 1834, 126, 1104, 638, 791, 265, 223, 461, 1457, 139, 456, 1905, 1663, 1412, 1568, 1763, 883, 1661, 1678, 493, 1606, 1813, 541, 1757, 276, 296, 1673, 222, 1707, 183, 257, 615, 1478, 742, 376, 810, 661, 365, 156, 1298, 1701, 1653, 202, 1334, 1197, 1482, 106, 323, 1448, 1558, 1179, 1854, 902, 1049, 297, 216, 1268, 277, 1336, 1393, 65, 1456, 1052, 5, 1735, 1495, 1175, 988, 117, 721, 1788, 315, 1819, 1305, 1794, 520, 543, 1214, 917, 731, 1091, 1147, 1070, 68, 892, 1486, 464, 783, 115, 1883, 1372, 752, 383, 1122, 582, 1039, 1213, 574, 1594, 1870, 1111, 1792, 706, 1674, 233, 1607, 691, 1417, 1071, 711, 1538, 252, 741, 1396, 1211, 1429, 1906, 513, 799, 1384, 1138, 1688, 1681, 1045, 961, 743, 1824, 619, 766, 1727, 147, 827, 1117, 1547, 1892, 39, 82, 1546, 963, 178, 658, 1592, 425, 484, 415, 1204, 1331, 1207, 561, 912, 451, 1548, 1494, 1210, 1676, 685, 1291, 793, 632, 1018], [1054, 207, 1715, 1233, 514, 238, 1377, 1677, 878, 1624, 1145, 1009, 469, 962, 1194, 93, 1556, 1851, 1569, 1089, 745, 423, 23, 821, 29, 1401, 789, 1791, 788, 1079, 1347, 503, 1199, 753, 848, 1294, 801, 682, 955, 112, 1188, 402, 1878, 1817, 1288, 1821, 1245, 1302, 1007, 1705, 271, 510, 1510, 327, 1127, 486, 1555, 1004, 1589, 1511, 1700, 1373, 1668, 341, 1489, 1790, 1492, 321, 659, 578, 303, 118, 960, 453, 160, 683, 1832, 434, 701, 928, 480, 1446, 1552, 704, 94, 1317, 1410, 394, 186, 771, 859, 1395, 1646, 1570, 1353, 714, 1297, 360, 1153, 1185, 1766, 1471, 1013, 1356, 1437, 78, 63, 1618, 537, 482, 3, 450, 1339, 490, 857, 251, 898, 916, 546, 1809, 1689, 1078, 1069, 1, 1035, 1534, 1158, 203, 1837, 1095, 1235, 295, 933, 1474, 1559, 240, 105, 419, 1751, 1061, 1896, 1162, 1508, 1195, 237, 509, 1875, 6, 1564, 1698, 1907, 20, 1023, 1157, 1724, 132, 1912, 108, 1839, 734, 413, 316, 1249, 1880, 430, 915, 952, 813, 1532, 1116, 1859, 137, 1703, 141, 1785, 1582, 643, 119, 12, 968, 1193, 408, 214, 601, 967, 803, 1551, 363, 424, 958, 1826, 196]]Using cache found in /home/cc/.cache/torch/hub/facebookresearch_dinov2_b48308a394a04ccb9c4dd3a1f0a4daa1ce0579b8
+
+Resuming from epoch 65: /home/cc/ckpt/outputs/wall_single/checkpoints/model_latest.pth
+[2026-11-12 21:24:05,251][dinov2][INFO] - using MLP layer as FFN
+num_action_repeat: 1
+num_proprio_repeat: 1
+proprio encoder: ProprioceptiveEmbedding(
+  (patch_embed): Conv1d(2, 10, kernel_size=(1,), stride=(1,))
+)
+action encoder: ProprioceptiveEmbedding(
+  (patch_embed): Conv1d(10, 10, kernel_size=(1,), stride=(1,))
+)
+proprio_dim: 10, after repeat: 10
+action_dim: 10, after repeat: 10
+emb_dim: 404
+Model emb_dim:  404
+eval_seed:  [1, 100, 199, 298, 397, 496, 595, 694, 793, 892, 991, 1090, 1189, 1288, 1387, 1486, 1585, 1684, 1783, 1882, 1981, 2080, 2179, 2278, 2377, 2476, 2575, 2674, 2773, 2872, 2971, 3070, 3169, 3268, 3367, 3466, 3565, 3664, 3763, 3862, 3961, 4060, 4159, 4258, 4357, 4456, 4555, 4654, 4753, 4852]
+Dumped plan targets to /home/cc/dino_wm_smooth_planning/plan_outputs/20261112212359_sgd_adam_lr0.1_randn_K8_S125_sig3_geom_s99/plan_targets.pkl
+Success rate:  0.0
+{'success': array([False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([44.59094103, 22.76329517, 39.09937621, 37.13228227, 33.44835881,
+       42.17453715, 28.91031433, 48.95025577,  7.79627135, 47.44462945,
+       38.12539727, 38.99720796, 50.55386547, 34.38538802, 44.32997975,
+       28.70368738, 44.80020416, 15.28250548, 38.88755117, 49.42313958,
+       31.91128264, 40.68128278, 44.56829635, 28.46968086, 18.3665536 ,
+       54.64093603, 29.75235025, 49.59539763, 39.97819178, 29.44366093,
+       35.60461137, 29.46744482, 23.02727498, 29.69884015, 25.28753845,
+       39.83161398, 26.94937623, 28.59660997, 53.79492402, 44.58613211,
+       55.15560634, 30.8653871 , 35.76773922, 40.84428007, 31.53718548,
+       29.76977723, 45.77956805, 53.11707386, 22.70712249, 31.74588943])}
+Success rate:  0.02
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([42.3643421 , 20.99867419, 28.74342441, 32.74761006, 34.48789504,
+       42.4568736 , 25.59210898, 42.66086822,  2.55437231, 43.77479196,
+       38.65152704, 41.12357483, 36.63812296, 29.85459839, 36.14230847,
+       19.94799538, 29.19643271, 17.33676537, 49.7155908 , 45.26942735,
+       34.98351019, 39.58024723, 56.56530391, 22.9290209 , 17.57020376,
+       44.19954054, 25.86035174, 48.93022337, 39.61150189, 32.17627443,
+       31.22634137, 36.82807308, 28.75706151, 26.51165139, 24.51432272,
+       40.65036663, 26.85234207, 27.77189944, 50.78165071, 41.18017371,
+       54.460628  , 27.85529664, 39.02819807, 36.77398507, 27.93260667,
+       30.04336288, 34.96583073, 51.64244839, 25.89553732, 32.41686609])}
+Success rate:  0.02
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([37.82238951, 18.5089883 , 19.43492735, 19.74758869, 28.87060115,
+       37.53483865, 19.73038865, 40.37446346,  3.12623759, 39.82234973,
+       33.73222506, 36.48760052, 23.90512073, 22.57933931, 26.37532964,
+       16.54492135, 26.27557562, 19.53653017, 51.75563827, 36.74321469,
+       30.94978016, 34.9326239 , 56.10134821, 20.8130424 , 15.26941635,
+       31.30766472, 10.09446109, 45.17069727, 34.26032043, 30.3532107 ,
+       22.74089562, 34.10413801, 29.60385683, 25.10951136, 21.53691229,
+       40.03761707, 27.10990484, 29.10326355, 47.66649217, 32.6004517 ,
+       53.11528999, 30.0684985 , 38.94685161, 29.30765745, 22.35529752,
+       27.19367566, 29.2182343 , 47.52860123, 28.93318468, 30.13957051])}
+Success rate:  0.02
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([32.8174711 , 19.2250465 , 17.67148651, 13.39604816, 22.00658525,
+       31.28189887, 18.36182315, 37.08232718,  3.27177616, 36.07644703,
+       28.8810046 , 30.62661819, 11.12012141, 11.34558099, 15.07290562,
+       16.84284002, 27.9258974 , 15.7145395 , 47.47802182, 23.59878935,
+       24.38877438, 28.17795889, 51.3835749 , 18.54172648, 12.08583576,
+       25.32766747, 10.77792068, 33.32699605, 24.11842116, 25.59625108,
+       17.32125116, 27.40587544, 26.33841583, 21.05853181, 20.28813058,
+       39.31590473, 26.03425436, 29.00367211, 40.67558442, 23.23414291,
+       51.78891578, 28.65741283, 38.05283881, 17.24300336, 17.64441909,
+       22.00687757, 28.37050809, 36.89416831, 27.62653919, 24.65276004])}
+Success rate:  0.04
+{'success': array([False, False, False, False, False, False, False, False, False,
+       False, False, False, False,  True,  True, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([24.19349724, 19.58936406, 19.43774474, 15.96891895, 12.73512601,
+       24.74946532, 18.17982385, 34.21476173,  8.09773335, 33.92016324,
+       23.41801043, 20.98809962,  6.8230665 ,  3.73332391,  2.73775428,
+       16.84629319, 26.7403878 , 11.14240374, 39.86924061, 15.32043591,
+       17.12760804, 21.35028788, 41.52694846, 18.06378229, 12.75434256,
+       24.79850223, 23.2669043 , 29.77411752, 18.06535381, 22.51905988,
+       17.66844331, 17.39272965, 19.26583045, 14.17123754, 19.12577442,
+       39.20526914, 24.344749  , 26.99900189, 29.92241962, 20.6893638 ,
+       41.75555897, 24.37742329, 35.19187571, 11.15577189, 19.83721276,
+       16.10248706, 27.16547356, 24.84161921, 24.84116803, 17.20247546])}
+Success rate:  0.06
+{'success': array([False, False, False, False, False, False, False, False, False,
+       False, False, False,  True, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False,  True,
+       False, False, False, False,  True]), 'state_dist': array([20.51055415, 19.63093647, 18.15750391, 15.60888142,  4.87514288,
+       18.11900383, 18.14660577, 30.9938581 , 11.93506989, 32.38018999,
+       17.59972029, 13.85794798,  3.54984046,  8.05228397,  6.80611383,
+       16.87651729,  6.67785989, 10.51787505, 30.45853046, 15.34130807,
+       14.69655549, 17.94213292, 33.41095232,  5.31942104, 12.30241609,
+       24.52376199, 23.29700536, 28.51290429, 17.76890094, 24.3822233 ,
+       17.75387868, 13.17240309, 13.52789047,  7.02712907, 18.69969076,
+       30.87230835, 22.57284981, 24.80374162, 29.48704681, 21.84614703,
+       30.01993582, 21.9595272 , 30.67959161, 10.81495085,  3.41648001,
+       11.14437242, 26.6724259 , 24.01919282, 23.25089208,  3.14812074])}
+Success rate:  0.08
+{'success': array([False, False, False, False, False, False, False, False, False,
+       False, False,  True,  True, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False,  True, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+        True, False, False, False, False]), 'state_dist': array([20.5583818 , 19.33550138, 17.92004266, 15.81355362,  6.74427988,
+       18.11852306, 18.28931727, 25.51068368,  9.95926723, 30.66914271,
+       15.61682247,  2.44985687,  3.47285374, 10.63287495,  4.5197857 ,
+       16.73154073, 10.87411433,  9.42174819, 23.10945244, 16.03546702,
+       15.13541682, 16.49774978, 20.97826893, 20.12928519, 12.36047656,
+       24.85056616, 22.86871799, 28.82281557, 18.38941668, 23.49306069,
+       17.65195107, 12.90522995,  3.3928384 ,  9.0577585 , 18.9539228 ,
+       20.91034893, 20.37558845, 23.31662361, 28.59891825, 21.8663406 ,
+       24.77225156, 21.62712314, 25.79683756,  5.48541471,  7.46734303,
+        4.23232588, 27.2460509 , 23.58592788, 22.54343673,  9.50874454])}
+Success rate:  0.04
+{'success': array([False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False,  True, False, False, False, False, False, False,
+       False, False, False, False, False, False, False,  True, False,
+       False, False, False, False, False]), 'state_dist': array([20.51655543, 18.79188645, 17.04469338, 15.64686901, 15.47634238,
+       18.19709415, 18.64111673,  7.81156528, 11.38958873, 13.23955918,
+       15.49151668,  5.9679363 , 22.10416938,  9.29271318, 22.09604625,
+       16.59896528,  6.29141426,  6.24823282, 17.71291205, 16.45817421,
+       15.06497011, 16.42815894,  6.59415104, 22.36343258, 12.59478824,
+       24.88575505,  8.25656488, 28.94066107, 18.19628306,  2.22071772,
+       17.42189429, 12.62151185,  8.33260123,  6.19233255, 19.18412343,
+       11.3229093 , 18.99899515, 25.2542205 , 28.56073465, 22.00920414,
+       24.77699158, 21.4140679 , 15.57282238,  3.54353596,  5.45329683,
+        9.6698729 , 27.26394118,  9.29532515, 22.07965199, 14.66610273])}
+Success rate:  0.08
+{'success': array([False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False,  True, False, False, False,  True,
+       False, False, False, False, False, False, False, False, False,
+       False, False,  True, False, False, False, False,  True, False,
+       False, False, False, False, False]), 'state_dist': array([20.51198231, 18.67801442, 17.50149605, 15.58552561, 16.50222038,
+        5.66424688, 19.32416802,  7.78379315, 14.23830446, 11.09540869,
+       15.4724224 ,  5.77317176, 24.75126654,  8.57021276,  8.59718979,
+       16.81265715,  6.13648595,  6.45064931, 16.68708894, 16.67047372,
+       14.76861594, 16.4294632 ,  1.01349251, 22.58427094, 12.5552484 ,
+       24.87629775,  2.98714663, 29.13265432, 17.79279142,  9.7887459 ,
+       18.16733177, 12.46639613,  9.65321084, 10.8224255 , 18.95303087,
+       13.38506591,  5.69594338, 26.97181789,  2.23832952, 22.1020707 ,
+       24.82553119, 18.04394131, 13.49760669,  2.95477944,  5.00007182,
+       12.76093774, 27.91556515,  7.76126739, 21.81665536, 12.04658455])}
+Success rate:  0.1
+{'success': array([False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False,  True,
+       False, False, False, False,  True, False, False, False, False,
+       False, False,  True, False, False, False, False, False, False,
+        True, False,  True, False, False, False, False, False, False,
+       False, False, False, False, False]), 'state_dist': array([20.6551646 , 18.25960131, 17.22382934, 15.67768371, 16.46259637,
+        7.89331661, 20.46061184,  7.85952228,  4.78209597, 14.36498748,
+       15.73805977,  5.77505698, 25.7305489 ,  9.56462148,  9.43698639,
+       16.98126022,  6.09929522,  4.42035783,  4.93925717, 15.86476612,
+       14.26107998, 16.48327176,  1.83635235, 22.63803693, 12.5552484 ,
+       24.73603682, 23.66713677, 29.28837299, 17.45063964,  3.37657253,
+       18.89720597, 12.34032964,  8.78265647,  8.11385329, 18.8652052 ,
+       11.30658946,  2.07873245, 26.32029623,  2.5168015 , 20.9636632 ,
+       24.77170506,  9.8905241 , 13.89989021,  5.31718203,  5.13360851,
+       10.14388267, 28.79227645,  7.76704658, 21.74466298,  5.85807852])}
+Success rate:  0.18
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False,  True, False, False, False, False,
+       False, False, False, False, False, False,  True,  True, False,
+        True, False,  True, False, False, False, False,  True,  True,
+       False, False, False, False,  True]), 'state_dist': array([17.18966067, 15.42790016, 16.4753193 , 15.60863002, 16.77910323,
+        5.47663858, 21.73540728,  9.17463154,  0.52428983,  8.78795997,
+        9.76885064,  5.76251222, 29.24495083,  8.47191354,  8.1523771 ,
+       17.17188082,  6.21350429,  6.03767224,  6.41096269, 15.26604935,
+       11.15161884, 16.56521735,  2.60402721, 24.03755266, 12.5552484 ,
+       24.53321391, 24.31397265, 29.39772459, 17.37936947,  4.8000356 ,
+       19.94692349, 12.46911143,  5.17237094,  4.17285606,  3.0724581 ,
+       10.04678326,  3.42603599, 25.02435717,  1.2863414 , 22.85421599,
+        8.60573497,  5.00276066, 15.23904057,  3.00812303,  1.57833185,
+        6.71476426, 30.3092034 ,  7.42202545, 21.77118074,  0.36615138])}
+Success rate:  0.2
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False, False,
+        True, False, False, False, False, False, False, False, False,
+       False, False, False, False, False,  True,  True,  True, False,
+        True, False, False, False, False, False, False,  True,  True,
+        True, False, False, False,  True]), 'state_dist': array([10.43213477, 14.07515545, 16.30421364, 15.68173992, 17.19612773,
+        7.05962414, 22.88526934,  9.05571584,  2.68015193,  7.54264948,
+        9.24429284,  5.7642792 , 29.21157259,  6.51965994,  7.3016198 ,
+       17.44130487,  6.49803835,  6.86049989,  1.25333444, 15.36940687,
+        9.97217309, 16.5752957 ,  5.70594234, 24.08752046, 12.5552484 ,
+       24.66406613,  7.57684524, 29.48453457, 17.40410544,  8.16161963,
+       19.39200308, 12.34768684,  2.8177823 ,  2.66210535,  2.77949624,
+       10.2996    ,  1.68276847, 23.92068329,  4.7472673 , 24.29751807,
+        6.51986145,  4.63826718, 15.02922484,  2.96660588,  3.04375877,
+        1.7943399 , 31.73006819,  8.81331745, 21.82875722,  0.62928108])}
+Success rate:  0.3
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False,  True,
+        True, False, False, False,  True, False, False, False, False,
+       False, False,  True, False, False,  True,  True,  True, False,
+        True, False, False, False,  True,  True, False,  True,  True,
+        True, False, False, False,  True]), 'state_dist': array([ 7.85712084, 12.94736553, 16.33230237,  8.5447799 ,  8.86438875,
+        8.46864216, 23.75949756, 10.35999018,  0.71355766,  5.07889431,
+        8.80435093,  5.76665952, 28.82104618,  6.48378712,  7.69529281,
+       18.14436834,  6.89509375,  4.3658748 ,  1.89424748, 15.24218375,
+        6.76264928, 17.12968804,  2.87789278, 23.97728252, 12.5552484 ,
+       24.86031867,  6.38546615, 29.58364352, 17.49091466,  3.68286816,
+       19.87641834, 12.52222186,  1.94837623,  3.10285106,  3.34841116,
+       10.28025128,  3.04425586, 23.13112703,  6.04295563, 23.44636791,
+        4.22772426,  1.32003403, 15.012482  ,  2.98017613,  2.62612244,
+        1.58436033, 32.45111195,  7.19448575, 21.9199376 ,  2.07457111])}
+Success rate:  0.3
+{'success': array([False, False, False, False, False, False, False, False,  True,
+       False, False, False, False, False, False, False, False,  True,
+        True, False,  True, False, False, False, False, False, False,
+       False, False,  True, False, False,  True,  True,  True, False,
+       False, False, False, False,  True,  True, False,  True,  True,
+        True, False,  True, False,  True]), 'state_dist': array([ 5.11978889, 13.11739058, 16.85065779,  6.60265688, 14.21650654,
+        7.39731713, 24.14263906, 10.29005268,  0.27119453,  5.37879453,
+        8.40392654,  5.78400083, 28.57355147,  6.19786051,  7.11506477,
+       18.14436834,  6.74398829,  3.40871057,  1.83482713, 15.1871496 ,
+        4.19299982, 17.25629309,  4.72711127, 23.93169841, 12.5552484 ,
+       24.8558728 ,  5.93025871, 29.64425043, 17.57029169,  3.84466138,
+       20.3552176 , 12.6264489 ,  2.32568444,  2.12522522,  2.29688528,
+       10.31130582,  4.5787405 , 23.77381186,  6.39786185, 23.10258258,
+        4.2706195 ,  0.32719337, 15.19297039,  2.96209768,  2.33293215,
+        2.08018025, 32.5525284 ,  3.68463619, 21.09180346,  1.14523302])}
+run_stats: {'wall_clock_s': 1598.8794522285461, 'plan_fwd': 50000, 'plan_fwd_grad': 50000, 'plan_equiv': 150000, 'enc_images': 50050, 'pred_fwd': 250000, 'pred_fwd_grad': 250000, 'pred_equiv': 750000, 'eval_s': 69.7721619606018, 'eval_calls': 14, 'plan_s': 1529.1072902679443, 'oracle_stop': False, 'peak_gpu_mb': 6005.98583984375, 'gpu': 'Quadro RTX 6000', 'git_commit': '3b27b979c2ce292ce9cbcb2045c679ef41e1895f', 'git_dirty': False, 'num_hist': 1, 'wm_eval_mode': False, 'predictor_training_as_loaded': False, 'predictor_dropout_active': False, 'frameskip': 5, 'final_success_rate': 0.3}
+warning: probe.npz missing in plan_outputs/20261112212359_sgd_adam_lr0.1_randn_K8_S125_sig3_geom_s99
+  - model_name=wall_single
+  - planner=smooth_gd
+  - goal_source=random_state
+  - goal_H=5
+  - n_evals=50
+  - seed=99
+  - ckpt_base_path=/home/cc/ckpt
+  - +planner.oracle_stop=false
+  - +planner.episode_chunk=25
+  - planner.optimizer=adam
+  - planner.lr=0.1
+  - planner.sample_type=randn
+  - planner.sigma0=3
+  - planner.sigma_schedule=geom
+  - planner.sigma_min=0.3
+  - planner.K=8
+  - planner.opt_steps=125
+saved plan_outputs/20261112212359_sgd_adam_lr0.1_randn_K8_S125_sig3_geom_s99 -> results/wall/sgd_adam_lr0.1_randn_K8_S125_sig3_geom_s99
