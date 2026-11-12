@@ -1,0 +1,8 @@
+- model_name=wall_single
+- planner=smooth_gd
+- goal_source=random_state
+- goal_H=5
+- n_evals=2
+- planner.opt_steps=2
+- planner.K=4
+- +planner.oracle_stop=false
