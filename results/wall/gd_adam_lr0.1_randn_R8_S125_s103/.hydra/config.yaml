@@ -1,0 +1,29 @@
+ckpt_base_path: /home/cc/ckpt
+model_name: wall_single
+model_epoch: latest
+seed: 103
+n_evals: 50
+goal_source: random_state
+goal_H: 5
+n_plot_samples: 10
+debug_dset_init: false
+wm_eval_mode: false
+objective:
+  _target_: planning.objectives.create_objective_fn
+  alpha: 1
+  base: 2
+  mode: last
+planner:
+  _target_: planning.gd.GDPlanner
+  horizon: 5
+  action_noise: 0.003
+  sample_type: randn
+  lr: 0.1
+  opt_steps: 125
+  eval_every: 10
+  name: gd
+  optimizer: adam
+  restarts: 8
+  init_scale: 1.0
+  episode_chunk: 25
+  oracle_stop: false

@@ -1,0 +1,10 @@
+- planner=cem
+- planner.opt_steps=10
+- +planner.rollout_chunk=100
+- model_name=wall_single
+- goal_source=random_state
+- goal_H=5
+- n_evals=50
+- ckpt_base_path=/home/cc/ckpt
+- +planner.oracle_stop=false
+- seed=101
