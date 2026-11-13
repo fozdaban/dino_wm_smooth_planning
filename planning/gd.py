@@ -57,6 +57,9 @@ class GDPlanner(BasePlanner):
         self.init_scale = float(kwargs.get("init_scale", 1.0))
         assert self.optimizer_name in ("sgd", "adam"), self.optimizer_name
         assert self.restarts >= 1
+        # phase 6b (E3): also save every restart's final plan, (n, R, H, A), to
+        # restart_actions.pt in the run directory; does not change the returned plan
+        self.save_restarts = bool(kwargs.get("save_restarts", False))
 
     def init_actions(self, obs_0, actions=None, n_rows=None):
         """
@@ -197,5 +200,10 @@ class GDPlanner(BasePlanner):
                     break  # terminate planning if all success
         if self.restarts > 1:
             final_costs = self._model_costs(actions.detach(), trans_obs_0, z_obs_g_detached)
+            if self.save_restarts:  # phase 6b (E3)
+                torch.save(
+                    actions.detach().cpu().view(n_evals, self.restarts, *actions.shape[1:]),
+                    "restart_actions.pt",
+                )
             actions = self._select(actions.detach(), final_costs, n_evals)
         return actions, np.full(n_evals, np.inf)  # all actions are valid

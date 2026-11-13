@@ -1,0 +1,13 @@
+_target_: planning.rescore.RescorePlanner
+# phase 6b E3: score saved final plans with the smoothed cost J_sigma; no planning.
+# Use the same model_name, seed, n_evals, goal_source, goal_H as the runs scored.
+horizon: 5            # set to goal_H by plan.py
+runs: ???             # run folders; restart_actions.pt -> one candidate per restart,
+                      # otherwise final_actions.pt (relative to where plan.py was launched)
+sigmas: [0, 0.1, 0.33, 1.0]
+M: 64                 # perturbations, drawn once and shared by every candidate, sigma, episode
+chunk: 100            # rows per wm.rollout call (no grad)
+seed: 0
+evaluate: true        # simulator success of every candidate (one evaluator call each)
+
+name: rescore

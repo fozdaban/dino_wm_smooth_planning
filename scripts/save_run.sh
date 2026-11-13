@@ -11,8 +11,9 @@ dst=results/$env/$name
 [ -f "$src/logs.json" ] || { echo "no logs.json in $src (run unfinished?)"; exit 1; }
 [ -e "$dst" ] && { echo "refusing to overwrite existing $dst"; exit 1; }
 mkdir -p "$dst"
-for f in logs.json episodes.jsonl run_stats.json plan_targets.pkl final_actions.pt probe.npz; do
-  [ -f "$src/$f" ] && cp "$src/$f" "$dst/" || echo "warning: $f missing in $src"
+for f in logs.json episodes.jsonl run_stats.json plan_targets.pkl final_actions.pt probe.npz restart_actions.pt rescore.npz; do
+  if [ -f "$src/$f" ]; then cp "$src/$f" "$dst/"
+  else case $f in probe.npz|restart_actions.pt|rescore.npz) ;; *) echo "warning: $f missing in $src";; esac; fi
 done
 cp -r "$src/.hydra" "$dst/"
 echo "$src" > "$dst/source_dir.txt"
