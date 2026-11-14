@@ -1,0 +1,1 @@
+plan_outputs/20261113190518_6b_sgd_adam_lr0.1_randn_K8_S125_sig1_geom0.333_s99

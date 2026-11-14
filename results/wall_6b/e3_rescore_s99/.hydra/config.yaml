@@ -1,0 +1,34 @@
+ckpt_base_path: /home/cc/ckpt
+model_name: wall_single
+model_epoch: latest
+seed: 99
+n_evals: 50
+goal_source: random_state
+goal_H: 5
+n_plot_samples: 10
+debug_dset_init: false
+wm_eval_mode: false
+objective:
+  _target_: planning.objectives.create_objective_fn
+  alpha: 1
+  base: 2
+  mode: last
+planner:
+  _target_: planning.rescore.RescorePlanner
+  horizon: 5
+  runs:
+  - results/wall/sgd_adam_lr0.1_randn_K16_S62_sig1_geom_s99
+  - results/wall/sgd_adam_lr0.1_randn_K8_S125_sig1_geom_s99
+  - results/wall/endpoint_gd_s99
+  - results/wall/endpoint_cem10_s99
+  - results/wall_6b/gd_adam_lr0.1_randn_R8_S125_save_s99
+  sigmas:
+  - 0
+  - 0.1
+  - 0.33
+  - 1.0
+  M: 64
+  chunk: 100
+  seed: 0
+  evaluate: true
+  name: rescore

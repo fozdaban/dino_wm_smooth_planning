@@ -1,0 +1,14 @@
+- planner=gd
+- +planner.episode_chunk=25
+- +planner.oracle_stop=false
+- planner.optimizer=adam
+- planner.lr=0.1
+- planner.sample_type=randn
+- planner.restarts=8
+- planner.opt_steps=500
+- model_name=wall_single
+- goal_source=random_state
+- goal_H=5
+- n_evals=50
+- seed=99
+- ckpt_base_path=/home/cc/ckpt

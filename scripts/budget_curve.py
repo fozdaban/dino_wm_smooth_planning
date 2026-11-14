@@ -64,6 +64,8 @@ def main():
             continue
         cfg = yaml.safe_load((d / ".hydra" / "config.yaml").read_text())
         kind, unit, extra = per_step_cost(cfg)
+        if unit is None:  # not a planning run (e.g. the e3_rescore or a probe run)
+            continue
         lines, _ = read_episodes(d)
         rates = run_rates(lines)
         steps = int(cfg["planner"]["opt_steps"])
