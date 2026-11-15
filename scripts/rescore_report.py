@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 """Phase 6b E3 report: does the smoothed cost of a final plan predict simulator success?
 
 usage: python scripts/rescore_report.py results/wall_6b/e3_rescore_s99 [--set NAME=a,b ...]

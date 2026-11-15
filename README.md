@@ -1,3 +1,129 @@
+# Gaussian-Smoothed Gradient Planning for DINO-WM
+
+CS512 (Fall 2026) final project, **Option 2: modify a significant component of the paper.**
+
+Main paper: G. Zhou, H. Pan, Y. LeCun, L. Pinto, *DINO-WM: World Models on Pre-trained Visual
+Features enable Zero-shot Planning*, ICML 2025. This repository is the authors' released code
+(MIT license, upstream history up to commit `0a9492f`) plus my changes.
+
+**The modification.** DINO-WM plans by minimizing a latent-space cost J(a) over an action
+sequence a, either with CEM (sampling) or with gradient descent through the world model. Gradient
+descent does much worse than CEM: the learned cost is rugged, so GD lands in narrow minima that
+the model rates highly but that fail in the simulator ("fooled" failures). I replaced the GD
+update with a gradient of the *Gaussian-smoothed* cost
+
+    J_sigma(a) = E_{eps ~ N(0, I)} [ J(a + sigma * eps) ],
+    grad J_sigma(a) ≈ (1/K) * sum_k grad J(a + sigma * eps_k)     (antithetic pairs ±eps_k)
+
+with sigma annealed from sigma0 to sigma_min over the optimization (planning/smooth_gd.py).
+The world model is frozen and unchanged.
+
+## Quick start
+
+```bash
+pip install -r requirements.txt            # Python 3.9 (or: conda env create -f environment.yaml)
+
+python main.py all                         # CPU, < 1 min: test + toy + analyze, writes outputs/
+python main.py test                        # unit tests of the planners on a fake world model
+python main.py toy  --K 8 --sigma0 0.3     # smoothed vs plain GD on a bumpy fake model
+python main.py analyze                     # every report table and figure, from results/
+python main.py demo --n-evals 5            # real DINO-WM on Wall episodes (GPU, ~7 min)
+python main.py <mode> -h                   # all parameters of a mode
+```
+
+`demo` needs the dataset and the checkpoint (see `data.txt`, `model.txt`):
+`export DATASET_DIR=/path/to/data DINO_WM_CKPT=/path/to/ckpt`.
+
+### Outputs (`outputs/`, included from the run used for the report)
+
+| File | Content |
+|---|---|
+| `key_metrics.md` | success (95% CI), final distance, model cost, fooled/stuck failures, compute, time per planner |
+| `replication_report.md` | pre-registered test on fresh seeds 107/109/113 (`docs/replication_preregistration.md`) |
+| `phase6_report.md` | first held-out evaluation (seeds 101/103) |
+| `summary.md`, `summary.csv` | every saved run, grouped by configuration |
+| `budget_curve.md`, `rescore_report.md`, `probe_report.md` | budget sweep, smoothed-cost rescoring, cost-landscape probe (seed 99) |
+| `fig_success.png`, `fig_failure_types.png`, `fig_progress.png`, `fig_distance_cdf.png`, `fig_landscape.png` | report figures |
+| `toy_*.png`, `toy_summary.md` | fake-model illustration |
+| `test_log.txt` | unit test output |
+| `demo/` | the demo run: per-planner `logs.json` (every intermediate evaluation), `episodes.jsonl` (per episode), `run_stats.json`, rollout images, `demo_progress.png` |
+
+## What I changed (Option 2)
+
+Every change to an upstream file is marked inline with `# [MOD]`; every file I wrote starts with
+`# [NEW]`. List them with `grep -rn "\[MOD\]" --include=*.py --include=*.yaml .`, or see
+`git diff 0a9492f HEAD`.
+
+**New: the modification**
+- `planning/smooth_gd.py`: the smoothed-gradient planner (K perturbations per step, antithetic
+  sampling, sigma schedules const / linear / geom). The plan that is evaluated and returned is
+  always the unperturbed center.
+- `conf/planner/smooth_gd.yaml`: its settings.
+
+**Changed upstream files**
+- `planning/gd.py`: Adam option, random restarts (best restart chosen by model cost, never by the
+  simulator), init scale, chunked backprop (same gradient, less memory), optional oracle stop.
+  These make tuned GD a fair baseline and are reused by the smoothed planner.
+- `planning/cem.py`: chunked rollouts (same result), optional oracle stop.
+- `planning/evaluator.py`: per-episode success, distance and model cost written to
+  `episodes.jsonl`; decoder run without autograd (memory).
+- `plan.py`: compute counters, timing and git state in `run_stats.json`; saves the final plan;
+  world-model weights frozen; W&B logging off.
+- `models/dino.py`: DINOv2 hub repo pinned to a fixed commit.
+- `conf/plan*.yaml`, `conf/planner/gd.yaml`: run-folder names, checkpoint path from
+  `$DINO_WM_CKPT`, new GD options.
+
+`oracle_stop`: upstream stops planning as soon as the *simulator* reports all episodes solved,
+which a real planner cannot know. All results here use `oracle_stop=false` (fixed budget).
+
+**New: evaluation tooling**
+- `planning/compute.py`: hardware-independent compute counter (`plan_equiv`: one rollout = 1,
+  one backward = 2), so all planners are compared at equal compute (3,000 per episode).
+- `planning/probe.py`, `planning/rescore.py`: cost-landscape probe and smoothed-cost rescoring
+  (analysis only, no planning).
+- `scripts/`: experiment launchers (`*.sh`) and analysis (`*_report.py`, `collect_results.py`,
+  `episode_rates.py`, `budget_curve.py`).
+- `tests/`: planner tests on a small fake world model (e.g. K=1, sigma=0 reproduces GD exactly;
+  the K-sample gradient matches the exact smoothed gradient on a quadratic cost).
+- `main.py`: the entry point above.
+
+## Results and reproducing them
+
+`results/wall/<planner>_s<seed>/` holds every run used in the report (configuration, per-step
+logs, per-episode outcomes, compute stats, final plans). The raw outputs and plan-target pickles
+are not included (size), so `analyze` reports the "same starts/goals" check as not checked.
+All runs were produced at commit `8a57349` with a clean tree; later commits only added comments
+and documentation.
+
+Full experiments (GPU hours, one Quadro RTX 6000, ~12-17 min per planner per 50 episodes):
+
+```bash
+export CKPT=/path/to/ckpt DATASET_DIR=/path/to/data          # the launchers read CKPT
+STAGE=A bash scripts/phase3_sweep.sh   # tuning on seed 99 (stages A-C and phase 5:
+bash scripts/phase5_sweep.sh           #   see the usage notes at the top of each script)
+bash scripts/phase6_heldout.sh         # held-out seeds 101, 103
+bash scripts/replication_run.sh        # fresh seeds 107, 109, 113
+python main.py analyze
+```
+
+Single planning run, e.g. smoothed GD with K = 16:
+```bash
+python plan.py --config-name plan_wall model_name=wall_single planner=smooth_gd planner.K=16 \
+  planner.opt_steps=62 planner.optimizer=adam planner.lr=0.1 planner.sigma0=1 planner.sigma_min=0.1 \
+  planner.sigma_schedule=geom +planner.oracle_stop=false goal_source=random_state goal_H=5 n_evals=50 seed=107
+```
+
+## External code
+
+Not written by me: everything upstream of commit `0a9492f` (DINO-WM, Zhou et al., MIT
+license): world model, training, environments, datasets, CEM/GD/MPC planners, evaluator. The
+DINOv2 encoder (Oquab et al.) is loaded via torch.hub. Libraries: PyTorch, Hydra, NumPy, SciPy
+(exact binomial test), Matplotlib.
+
+---
+
+# Original DINO-WM README (upstream)
+
 # **DINO-WM**: World Models on Pre-trained Visual Features enable Zero-shot Planning
 [[Paper]](https://arxiv.org/abs/2411.04983) [[Code]]() [[Data]](https://osf.io/bmw48/?view_only=a56a296ce3b24cceaf408383a175ce28) [[Project Website]](https://dino-wm.github.io/) 
 

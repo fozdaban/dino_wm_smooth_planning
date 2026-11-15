@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 """Success rates from the episodes.jsonl files written by PlanEvaluator.eval_actions.
 
 usage: python scripts/phase1_rates.py <run_dir>... --at N

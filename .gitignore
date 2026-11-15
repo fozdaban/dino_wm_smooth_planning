@@ -7,3 +7,4 @@ results/**/plan_targets.pkl
 p*_w*.log
 p6*.log
 *.patch
+*.zip

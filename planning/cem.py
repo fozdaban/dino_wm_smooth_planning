@@ -40,10 +40,10 @@ class CEMPlanner(BasePlanner):
         self.opt_steps = opt_steps
         self.eval_every = eval_every
         self.logging_prefix = logging_prefix
-        # evaluate the num_samples candidates in chunks to stay within GPU memory;
+        # [MOD] evaluate the num_samples candidates in chunks to stay within GPU memory;
         # results are identical to one big batch (up to float nondeterminism)
         self.rollout_chunk = kwargs.get("rollout_chunk", 25)
-        # upstream stops planning once the simulator reports every episode solved,
+        # [MOD] upstream stops planning once the simulator reports every episode solved,
         # which uses information a real planner doesn't have; false = fixed budget
         self.oracle_stop = kwargs.get("oracle_stop", True)
 
@@ -110,6 +110,7 @@ class CEMPlanner(BasePlanner):
                     + mu[traj]
                 )
                 action[0] = mu[traj]  # optional: make the first one mu itself
+                # [MOD] chunked rollouts (see rollout_chunk); upstream rolled out one batch
                 loss_chunks = []
                 with torch.no_grad():
                     for s in range(0, self.num_samples, self.rollout_chunk):
@@ -141,7 +142,7 @@ class CEMPlanner(BasePlanner):
                 logs.update({"step": i + 1})
                 self.wandb_run.log(logs)
                 self.dump_logs(logs)
-                if self.oracle_stop and np.all(successes):
+                if self.oracle_stop and np.all(successes):  # [MOD] upstream: if np.all(successes)
                     break  # terminate planning if all success
 
         return mu, np.full(n_evals, np.inf)  # all actions are valid

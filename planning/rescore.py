@@ -1,3 +1,4 @@
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 """Phase 6b, experiment E3: score saved final plans with the smoothed cost (no planning).
 
 Question: does the smoothed cost J_sigma(a) = mean_m J(a + sigma eps_m) of a FINAL plan

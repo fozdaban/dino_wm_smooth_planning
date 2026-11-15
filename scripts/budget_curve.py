@@ -1,10 +1,11 @@
 #!/usr/bin/env python
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 """Phase 6b E1: success against compute budget (plan-rollout equivalents per episode).
 
 usage: python scripts/budget_curve.py [run dirs ...] [--budgets 3000 6000 9000 12000]
        default runs: every results/wall_6b/*_s99 plus the phase-5/6 seed-99 references.
 
-Budget of an evaluation, per episode (the unit of roadmap.md, backward = 2 forwards):
+Budget of an evaluation, per episode (plan_equiv of planning/compute.py, backward = 2 forwards):
   CEM (planner cem)          300 samples x iteration
   GD  (planner gd)           3 x restarts x step         (+ restarts for the final pick)
   smoothed (planner smooth_gd) 3 x K x step

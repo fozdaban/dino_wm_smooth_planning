@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 # Copy the report-relevant files of one planning run into results/.
 # plan_targets.pkl holds the start/goal images (~1.2 MB per episode, 60 MB at n_evals=50);
 # it is kept for reproducibility but gitignored, so only the small files get committed.

@@ -1,0 +1,15 @@
+Model: pre-trained DINO-WM world model for the Wall task (wall_single), trained and released
+by the DINO-WM authors. It is used frozen: this project changes only the planner, never the
+model weights. Not included in the submission (352 MB).
+
+  Download: https://osf.io/bmw48/?view_only=a56a296ce3b24cceaf408383a175ce28  (checkpoints -> wall_single)
+
+Setup: place it so that  $DINO_WM_CKPT/outputs/wall_single/checkpoints/  holds the .pth files
+(with hydra.yaml next to checkpoints/), then
+  export DINO_WM_CKPT=/path/to/ckpt
+
+The DINOv2 ViT-S/14 encoder is downloaded automatically by torch.hub on first use,
+pinned to commit b48308a394a04ccb9c4dd3a1f0a4daa1ce0579b8 of facebookresearch/dinov2
+(models/dino.py).
+
+Only needed for `python main.py demo` (and plan.py).

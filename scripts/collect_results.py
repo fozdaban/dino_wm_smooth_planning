@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 """Collect saved runs into one table (phase 2 harness).
 
 usage: python scripts/collect_results.py [results/wall] [--heldout-seeds 101 103] [--csv out.csv]

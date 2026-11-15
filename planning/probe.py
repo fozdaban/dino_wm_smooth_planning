@@ -1,3 +1,4 @@
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 """Cost-landscape probe between a GD run's plan and a CEM run's plan (no planning).
 
 For each selected episode, with a_GD, a_CEM from the two runs' final_actions.pt and

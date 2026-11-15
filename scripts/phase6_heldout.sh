@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Phase 6: the pre-registered held-out runs (claude/phase6_preregistration.md).
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# Phase 6: the pre-registered held-out runs (analysis fixed in advance: scripts/phase6_report.py).
 # Five planners x seeds 101, 103, ONE RUN AT A TIME so every plan_s is a solo-GPU timing.
 # Overrides are copied from the seed-99 runs' .hydra/overrides.yaml, so each planner's
 # held-out runs have the same resolved config (and pool in collect_results.py).

@@ -1,0 +1,13 @@
+Dataset: DINO-WM "Wall" offline dataset (wall_single), released by the DINO-WM authors.
+Not created by me and not included in the submission.
+
+  Download: https://osf.io/bmw48/?view_only=a56a296ce3b24cceaf408383a175ce28  (datasets -> wall_single)
+  Paper:    G. Zhou, H. Pan, Y. LeCun, L. Pinto, "DINO-WM: World Models on Pre-trained
+            Visual Features enable Zero-shot Planning", ICML 2025.
+
+Setup: unzip so that the folder $DATASET_DIR/wall_single exists, then
+  export DATASET_DIR=/path/to/data
+
+Only needed for `python main.py demo` (and plan.py): the planner reads the action/state
+normalization statistics from it. `main.py test`, `toy` and `analyze` need no dataset;
+`analyze` uses the per-episode results saved in results/ (included).

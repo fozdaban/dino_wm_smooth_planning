@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 """Check that planning runs faced identical problems (same starts and goals).
 
 usage: python scripts/check_same_goals.py <run_dir> <run_dir> [...]

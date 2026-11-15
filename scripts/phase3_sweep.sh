@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 # Phase 3: tune gradient planning on the TUNING seed (99) only.
 #
 #   STAGE=A bash scripts/phase3_sweep.sh                      # optimizer x learning rate

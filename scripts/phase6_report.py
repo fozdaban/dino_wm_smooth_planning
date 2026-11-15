@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-"""Phase 6 analysis, exactly as pre-registered in claude/phase6_preregistration.md.
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+"""Phase 6 analysis, as fixed before the held-out runs (seeds 101, 103).
 
 usage: python scripts/phase6_report.py [results/wall] [--seeds 101 103] > results/wall/phase6_report.md
 

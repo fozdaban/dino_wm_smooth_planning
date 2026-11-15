@@ -1,8 +1,8 @@
 import os
 import gym
 import json
-import subprocess
-import time
+import subprocess  # [MOD] git state for run_stats.json
+import time  # [MOD] wall-clock timing
 import hydra
 import random
 import torch
@@ -21,7 +21,7 @@ from env.venv import SubprocVectorEnv
 from custom_resolvers import replace_slash
 from preprocessor import Preprocessor
 from planning.evaluator import PlanEvaluator
-from planning.compute import ComputeMeter, _sync
+from planning.compute import ComputeMeter, _sync  # [MOD] new module: compute counters
 from utils import cfg_to_dict, seed
 
 warnings.filterwarnings("ignore")
@@ -177,7 +177,7 @@ class PlanWorkspace:
         ):
             self.wandb_run = DummyWandbRun()
 
-        # lets the evaluator log each episode's model cost in episodes.jsonl
+        # [MOD] lets the evaluator log each episode's model cost in episodes.jsonl
         self.evaluator.objective_fn = objective_fn
 
         self.log_filename = "logs.json"  # planner and final eval logs are dumped here
@@ -338,7 +338,7 @@ class PlanWorkspace:
             obs_g=self.obs_g,
             actions=actions_init,
         )
-        # the returned plan, in normalized action units (not env units), shape
+        # [MOD] the returned plan, in normalized action units (not env units), shape
         # (n_evals, horizon, action_dim); for MPC the time axis is all executed rounds
         # concatenated. Saved to the run directory (hydra's cwd), like logs.json.
         torch.save(actions.detach().cpu(), "final_actions.pt")
@@ -437,6 +437,7 @@ class DummyWandbRun:
         pass
 
 
+# [MOD] new helper
 def git_state():
     """Commit and dirty flag of the code that is running (hydra changes the cwd)."""
     repo = os.path.dirname(os.path.abspath(__file__))
@@ -480,11 +481,11 @@ def planning_main(cfg_dict):
         Path(model_path) / "checkpoints" / f"model_{cfg_dict['model_epoch']}.pth"
     )
     model = load_model(model_ckpt, model_cfg, num_action_repeat, device=device)
-    # Planning never updates the world model. Freezing its weights means autograd only
+    # [MOD] Planning never updates the world model. Freezing its weights means autograd only
     # tracks the actions: GD's action gradients are unchanged, but no graph is kept for
     # encoder/decoder/predictor weights (saves memory and backward compute).
     model.requires_grad_(False)
-    # The predictor has dropout 0.1. Upstream never calls eval(), so whether dropout is
+    # [MOD] The predictor has dropout 0.1. Upstream never calls eval(), so whether dropout is
     # active while planning depends on the training flag saved in the checkpoint.
     predictor_training_as_loaded = model.predictor.training if model.predictor is not None else None
     wm_eval_mode = cfg_dict.get("wm_eval_mode", False)
@@ -522,7 +523,7 @@ def planning_main(cfg_dict):
         wandb_run=wandb_run,
     )
 
-    # phase 2 harness: count world-model work done by the planner and time the
+    # [MOD] phase 2 harness: count world-model work done by the planner and time the
     # evaluator separately; neither changes what the planner computes
     meter = ComputeMeter().attach(model).wrap_evaluator(plan_workspace.evaluator)
 
@@ -558,7 +559,7 @@ def main(cfg: OmegaConf):
         cfg["saved_folder"] = os.getcwd()
         log.info(f"Planning result saved dir: {cfg['saved_folder']}")
     cfg_dict = cfg_to_dict(cfg)
-    cfg_dict["wandb_logging"] = False  # was True upstream: W&B asked for login every run
+    cfg_dict["wandb_logging"] = False  # [MOD] was True upstream: W&B asked for login every run
     planning_main(cfg_dict)
 
 

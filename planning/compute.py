@@ -1,10 +1,11 @@
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 """Hardware-independent compute counters for planning (phase 2 harness).
 
 Counts work done through the world model by the *planner* only. Calls made while the
 evaluator runs (simulator rollouts, decoding, plotting, the final evaluation) are
 excluded: ComputeMeter.paused() is wrapped around every evaluator call in plan.py.
 
-Units (main one first; it matches roadmap.md: CEM@10 = 3,000 per episode, GD@400 = 1,200)
+Units (main one first; e.g. CEM@10 = 3,000 per episode, GD@400 = 1,200)
   plan_fwd          plan-rollouts: one wm.rollout of a batch of b plans counts b (one plan
                     pushed through all horizon model steps).
   plan_fwd_grad     the subset of plan_fwd run with autograd on the actions; these are

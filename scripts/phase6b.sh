@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 # Phase 6b exploration on the TUNING seed (99) only; results go to results/wall_6b/.
-# Phase-6 results (results/wall/) are never touched. See roadmap.md "Phase 6b".
+# Phase-6 results (results/wall/) are never touched.
 #
 #   E2     higher sigma floor: smoothed K16x62 and K8x125, sigma 1 -> 0.333 (geom)   2 runs
 #   E3prep GD + restarts R8x125 that also saves all 8 restart plans                   1 run

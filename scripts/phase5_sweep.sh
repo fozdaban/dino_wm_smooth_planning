@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
 # Phase 5: smoothed GD (planner=smooth_gd) on the TUNING seed (99) only.
 # OPT, LR, INIT are the tuned GD settings from phase 3, passed exactly as to its stage C;
 # SIGMAS are three sigma0 values from the probe.

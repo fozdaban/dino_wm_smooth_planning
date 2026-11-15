@@ -1,5 +1,5 @@
 import os
-import json
+import json  # [MOD]
 import torch
 import imageio
 import numpy as np
@@ -107,7 +107,7 @@ class PlanEvaluator:  # evaluator for planning
                 obs_0=trans_obs_0,
                 act=actions,
             )
-            # per-episode planning cost of these actions under the model (what the
+            # [MOD] per-episode planning cost of these actions under the model (what the
             # planner minimizes). Low cost + failure = model fooled; high cost = stuck.
             model_cost = None
             if getattr(self, "objective_fn", None) is not None:
@@ -128,6 +128,7 @@ class PlanEvaluator:  # evaluator for planning
         ]  # reduce dim back
 
         # compute eval metrics
+        # [MOD] also returns per-episode metrics
         logs, successes, episode_metrics = self._compute_rollout_metrics(
             e_state=e_final_state,
             e_obs=e_final_obs,
@@ -135,13 +136,13 @@ class PlanEvaluator:  # evaluator for planning
         )
         if model_cost is not None:
             episode_metrics["model_cost"] = model_cost
-        # one line per call, in the run directory (cwd, like logs.json)
+        # [MOD] one line per call, in the run directory (cwd, like logs.json)
         with open("episodes.jsonl", "a") as f:
             f.write(json.dumps({"filename": filename, **episode_metrics}) + "\n")
 
         # plot trajs
         if self.wm.decoder is not None:
-            # no_grad: the decoder's weights require grad, so without it autograd keeps
+            # [MOD] no_grad: the decoder's weights require grad, so without it autograd keeps
             # every decoder activation alive (roughly 2.3x the memory). The slice adds
             # savings only when n_evals > n_plot_samples: only those episodes are plotted.
             n_plot = min(self.n_plot_samples, n_evals)
@@ -197,7 +198,7 @@ class PlanEvaluator:  # evaluator for planning
         e_z_obs = self.wm.encode_obs(e_obs)
         div_visual_emb = torch.norm(e_z_obs["visual"] - i_z_obs["visual"]).item()
         div_proprio_emb = torch.norm(e_z_obs["proprio"] - i_z_obs["proprio"]).item()
-        # per-episode L2 distance between executed and imagined final visual embeddings
+        # [MOD] per-episode L2 distance between executed and imagined final visual embeddings
         visual_emb_diff = e_z_obs["visual"] - i_z_obs["visual"]
         div_visual_emb_per_ep = visual_emb_diff.reshape(visual_emb_diff.shape[0], -1).norm(dim=1)
 
@@ -215,7 +216,7 @@ class PlanEvaluator:  # evaluator for planning
             "mean_div_proprio_emb": div_proprio_emb,
         })
 
-        return logs, successes, episode_metrics
+        return logs, successes, episode_metrics  # [MOD] upstream: logs, successes
 
     def _plot_rollout_compare(
         self, e_visuals, i_visuals, successes, save_video=False, filename=""
