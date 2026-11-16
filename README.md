@@ -27,7 +27,7 @@ python main.py all                         # CPU, < 1 min: test + toy + analyze,
 python main.py test                        # unit tests of the planners on a fake world model
 python main.py toy  --K 8 --sigma0 0.3     # smoothed vs plain GD on a bumpy fake model
 python main.py analyze                     # every report table and figure, from results/
-python main.py demo --n-evals 5            # real DINO-WM on Wall episodes (GPU, ~7 min)
+python main.py demo --n-evals 20           # real DINO-WM on Wall episodes (GPU, ~26 min)
 python main.py <mode> -h                   # all parameters of a mode
 ```
 

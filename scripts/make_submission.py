@@ -22,7 +22,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 EXCLUDE = ["p[0-9]*.log", "*.patch", "*.pyc", "*/__pycache__/*", "*plan_targets.pkl", "*.zip",
-           ".vscode/*", "plan_outputs/*"]
+           ".vscode/*", "plan_outputs/*",
+           # per-evaluation rollout images of the demo (~250 MB); the numbers they show are
+           # in logs.json / episodes.jsonl, and output_final*.png/.mp4 are kept
+           "outputs/demo/*/plan_0_output_*.png"]
 REQUIRED = ["README.md", "main.py", "requirements.txt", "data.txt", "model.txt"]
 
 
