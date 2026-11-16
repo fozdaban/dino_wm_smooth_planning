@@ -1,4 +1,4 @@
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 import torch
 import numpy as np
 from .gd import GDPlanner

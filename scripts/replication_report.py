@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 """Replication analysis, exactly as pre-registered in docs/replication_preregistration.md.
 
 usage: python scripts/replication_report.py [results/wall] > results/wall/replication_report.md

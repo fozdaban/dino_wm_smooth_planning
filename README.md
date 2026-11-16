@@ -1,22 +1,57 @@
 # Gaussian-Smoothed Gradient Planning for DINO-WM
 
-CS512 (Fall 2026) final project, **Option 2: modify a significant component of the paper.**
+Gradient-based planning through a learned world model is fast, but on
+[DINO-WM](https://dino-wm.github.io/) it fails far more often than sampling-based CEM. This project
+replaces the planner's gradient with the gradient of a **Gaussian-smoothed planning cost** and
+tests the change with pre-registered, equal-compute comparisons on held-out episodes.
 
-Main paper: G. Zhou, H. Pan, Y. LeCun, L. Pinto, *DINO-WM: World Models on Pre-trained Visual
-Features enable Zero-shot Planning*, ICML 2025. This repository is the authors' released code
-(MIT license, upstream history up to commit `0a9492f`) plus my changes.
+**Result (Wall task, 250 held-out episodes, equal compute):** smoothing more than doubles the
+success of tuned gradient descent, **0.12 → 0.26** (exact McNemar p = 2e-5, confirmed on fresh
+pre-registered seeds), and halves the "fooled" failures where the world model rates a failing plan
+better than CEM's. CEM remains stronger (0.56).
 
-**The modification.** DINO-WM plans by minimizing a latent-space cost J(a) over an action
-sequence a, either with CEM (sampling) or with gradient descent through the world model. Gradient
-descent does much worse than CEM: the learned cost is rugged, so GD lands in narrow minima that
-the model rates highly but that fail in the simulator ("fooled" failures). I replaced the GD
-update with a gradient of the *Gaussian-smoothed* cost
+| Planner (3,000 rollout-equivalents / episode) | Success (95% CI) | Mean final distance | Fooled failures |
+|---|---|---|---|
+| CEM, 10 iterations | 0.56 [0.50, 0.62] | 6.4 | (reference) |
+| Gradient descent, tuned (Adam) | 0.12 [0.08, 0.16] | 17.5 | 162 |
+| **Smoothed gradient descent, K = 16** | **0.26 [0.21, 0.32]** | **12.5** | **88** |
+
+<p align="center">
+  <img src="docs/figures/fig_success.png" width="48%">
+  <img src="docs/figures/fig_failure_types.png" width="40%">
+</p>
+
+## Method
+
+DINO-WM (Zhou, Pan, LeCun, Pinto, ICML 2025) plans by minimizing a cost J(a) between the
+predicted and the goal DINOv2 features over an action sequence a. The learned cost is rugged:
+gradient descent lands in narrow minima that the model rates highly but that fail in the simulator.
+Smoothed GD follows the gradient of
 
     J_sigma(a) = E_{eps ~ N(0, I)} [ J(a + sigma * eps) ],
     grad J_sigma(a) ≈ (1/K) * sum_k grad J(a + sigma * eps_k)     (antithetic pairs ±eps_k)
 
-with sigma annealed from sigma0 to sigma_min over the optimization (planning/smooth_gd.py).
-The world model is frozen and unchanged.
+with sigma annealed geometrically from sigma0 to sigma_min ([planning/smooth_gd.py](planning/smooth_gd.py)).
+The returned plan is always the unperturbed center; the world model is frozen and unchanged.
+
+The cost between a failed GD plan (t = 0) and a successful CEM plan (t = 1): the raw cost
+(black) has narrow dips that larger sigma flattens.
+
+![cost landscape](docs/figures/fig_landscape.png)
+
+Success and distance during optimization, averaged over the held-out seeds:
+
+![progress](docs/figures/fig_progress.png)
+
+**Evaluation protocol.** Hyperparameters were tuned on seed 99 only; held-out seeds 101/103
+were run with the analysis fixed in advance, and the result was then replicated on fresh seeds
+107/109/113 under a committed pre-registration ([docs/replication_preregistration.md](docs/replication_preregistration.md)):
+smoothed vs tuned GD, 32 vs 8 discordant episodes, p = 0.00018. Compute is counted in
+hardware-independent rollout equivalents ([planning/compute.py](planning/compute.py)), and the
+upstream "oracle stop" (stopping once the simulator reports success) is disabled.
+
+This repository is the authors' released code (MIT license, upstream history up to commit
+`0a9492f`) plus my changes.
 
 ## Quick start
 
@@ -26,7 +61,7 @@ pip install -r requirements.txt            # Python 3.9 (or: conda env create -f
 python main.py all                         # CPU, < 1 min: test + toy + analyze, writes outputs/
 python main.py test                        # unit tests of the planners on a fake world model
 python main.py toy  --K 8 --sigma0 0.3     # smoothed vs plain GD on a bumpy fake model
-python main.py analyze                     # every report table and figure, from results/
+python main.py analyze                     # every results table and figure, from results/
 python main.py demo --n-evals 20           # real DINO-WM on Wall episodes (GPU, ~26 min)
 python main.py <mode> -h                   # all parameters of a mode
 ```
@@ -34,7 +69,7 @@ python main.py <mode> -h                   # all parameters of a mode
 `demo` needs the dataset and the checkpoint (see `data.txt`, `model.txt`):
 `export DATASET_DIR=/path/to/data DINO_WM_CKPT=/path/to/ckpt`.
 
-### Outputs (`outputs/`, included from the run used for the report)
+### Outputs (`outputs/`, written by `main.py`; not tracked in git)
 
 | File | Content |
 |---|---|
@@ -43,12 +78,12 @@ python main.py <mode> -h                   # all parameters of a mode
 | `phase6_report.md` | first held-out evaluation (seeds 101/103) |
 | `summary.md`, `summary.csv` | every saved run, grouped by configuration |
 | `budget_curve.md`, `rescore_report.md`, `probe_report.md` | budget sweep, smoothed-cost rescoring, cost-landscape probe (seed 99) |
-| `fig_success.png`, `fig_failure_types.png`, `fig_progress.png`, `fig_distance_cdf.png`, `fig_landscape.png` | report figures |
+| `fig_success.png`, `fig_failure_types.png`, `fig_progress.png`, `fig_distance_cdf.png`, `fig_landscape.png` | figures (copies of the main ones in `docs/figures/`) |
 | `toy_*.png`, `toy_summary.md` | fake-model illustration |
 | `test_log.txt` | unit test output |
 | `demo/` | the demo run: per-planner `logs.json` (every intermediate evaluation), `episodes.jsonl` (per episode), `run_stats.json`, rollout images, `demo_progress.png` |
 
-## What I changed (Option 2)
+## What I changed
 
 Every change to an upstream file is marked inline with `# [MOD]`; every file I wrote starts with
 `# [NEW]`. List them with `grep -rn "\[MOD\]" --include=*.py --include=*.yaml .`, or see
@@ -89,7 +124,7 @@ which a real planner cannot know. All results here use `oracle_stop=false` (fixe
 
 ## Results and reproducing them
 
-`results/wall/<planner>_s<seed>/` holds every run used in the report (configuration, per-step
+`results/wall/<planner>_s<seed>/` holds every run behind the results above (configuration, per-step
 logs, per-episode outcomes, compute stats, final plans). The raw outputs and plan-target pickles
 are not included (size), so `analyze` reports the "same starts/goals" check as not checked.
 All runs were produced at commit `8a57349` with a clean tree; later commits only added comments

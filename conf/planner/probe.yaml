@@ -1,4 +1,4 @@
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 _target_: planning.probe.ProbePlanner
 # cost-landscape probe between a GD and a CEM run's final plans; no planning.
 # Use the same model_name, seed, n_evals, goal_source, goal_H as the two runs.

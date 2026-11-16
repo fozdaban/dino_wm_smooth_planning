@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 # Phase 6b exploration on the TUNING seed (99) only; results go to results/wall_6b/.
 # Phase-6 results (results/wall/) are never touched.
 #

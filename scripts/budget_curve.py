@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 """Phase 6b E1: success against compute budget (plan-rollout equivalents per episode).
 
 usage: python scripts/budget_curve.py [run dirs ...] [--budgets 3000 6000 9000 12000]

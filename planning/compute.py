@@ -1,4 +1,4 @@
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 """Hardware-independent compute counters for planning (phase 2 harness).
 
 Counts work done through the world model by the *planner* only. Calls made while the

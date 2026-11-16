@@ -1,4 +1,4 @@
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 """GD / SmoothGD planners on a small fake world model (CPU, seconds).
 
 Run from the repo root:  python tests/test_gd_fake_wm.py

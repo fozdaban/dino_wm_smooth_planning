@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
-"""Entry point for the CS512 project: Gaussian-smoothed gradient planning in DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
+"""Entry point: Gaussian-smoothed gradient planning in DINO-WM.
 
 The modification (planning/smooth_gd.py) replaces the gradient of the planning cost J(a)
 with the gradient of its Gaussian smoothing, J_sigma(a) = E_eps[J(a + sigma eps)],

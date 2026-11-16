@@ -1,4 +1,4 @@
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 """Summarize a probe run (planner=probe) and apply the pre-registered smoothing gate.
 
 usage: python scripts/probe_report.py <probe_run_dir>

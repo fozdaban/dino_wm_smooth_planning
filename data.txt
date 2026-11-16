@@ -1,5 +1,5 @@
 Dataset: DINO-WM "Wall" offline dataset (wall_single), released by the DINO-WM authors.
-Not created by me and not included in the submission.
+Not created by me and not included in this repository.
 
   Download: https://osf.io/bmw48/?view_only=a56a296ce3b24cceaf408383a175ce28  (datasets -> wall_single)
   Paper:    G. Zhou, H. Pan, Y. LeCun, L. Pinto, "DINO-WM: World Models on Pre-trained

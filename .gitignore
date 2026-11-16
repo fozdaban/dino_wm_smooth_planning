@@ -4,7 +4,9 @@ outputs
 plan_outputs
 # saved runs: commit the small files, keep the large plan targets local
 results/**/plan_targets.pkl
-p*_w*.log
-p6*.log
+# experiment launcher logs
+p*.log
 *.patch
 *.zip
+# local extras bundled by scripts/make_submission.py
+submission_extra/

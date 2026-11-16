@@ -1,4 +1,4 @@
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 _target_: planning.rescore.RescorePlanner
 # phase 6b E3: score saved final plans with the smoothed cost J_sigma; no planning.
 # Use the same model_name, seed, n_evals, goal_source, goal_H as the runs scored.

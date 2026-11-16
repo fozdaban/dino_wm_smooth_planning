@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
+# [NEW] Written for this project; not part of upstream DINO-WM.
 # Replication on FRESH seeds 107, 109, 113 (docs/replication_preregistration.md).
 # Same planner settings as phase 6 (configs identical apart from seed), ONE RUN AT A TIME.
 #

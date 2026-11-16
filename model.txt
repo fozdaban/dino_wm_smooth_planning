@@ -1,6 +1,6 @@
 Model: pre-trained DINO-WM world model for the Wall task (wall_single), trained and released
 by the DINO-WM authors. It is used frozen: this project changes only the planner, never the
-model weights. Not included in the submission (352 MB).
+model weights. Not included in this repository (352 MB).
 
   Download: https://osf.io/bmw48/?view_only=a56a296ce3b24cceaf408383a175ce28  (checkpoints -> wall_single)
 

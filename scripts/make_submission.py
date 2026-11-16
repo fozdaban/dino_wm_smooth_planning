@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-# [NEW] Written for this project (CS512 Option 2); not part of upstream DINO-WM.
-"""Build the Canvas submission zip.
+# [NEW] Written for this project; not part of upstream DINO-WM.
+"""Build a self-contained zip of the project (code, saved results, outputs/).
 
-usage: python scripts/make_submission.py [--extra submission_extra] [--out cs512_project.zip]
+usage: python scripts/make_submission.py [--extra submission_extra] [--out dino_wm_smooth_planning.zip]
 
 Contents (zip root = repo root):
   code       every file git tracks or would track (git ls-files --cached --others
@@ -37,7 +37,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--extra", default="submission_extra",
                     help="folder with report.pdf, presentation, papers/ (copied to the zip root)")
-    ap.add_argument("--out", default="cs512_project.zip")
+    ap.add_argument("--out", default="dino_wm_smooth_planning.zip")
     a = ap.parse_args()
 
     files = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard"],
